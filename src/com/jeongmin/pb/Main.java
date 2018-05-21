@@ -11,7 +11,7 @@ public class Main {
 		new Main();
 	}
 	Main(){
-		field = new Field(640/2,480/2);			//鞘靛 积己
+		field = new Field(320,240);			//鞘靛 积己
 		ball = new Ball(field);				//傍 积己
 		
 		JPanel pan = new JPanel(null);

@@ -5,15 +5,16 @@ import java.awt.*;
 public class Ball {
 	Field f;
 	int x,y;	//공 좌표
+	int radius;
 	double vx, vy;	//공 속도
 	
-	Ball(Field f){x = 0; vx = 3; vy = 3; y = 0; this.f = f;}	//공 생성자
+	Ball(Field f){x = f.getRight()/2; y = f.getBottom()/2; vx = 3; vy = 3; this.f = f;}	//공 생성자
 	
 	void draw(Graphics g) {	//공 그리기
 		int radius = 5;
 		g.setColor(Color.black);
-		g.fillOval(f.getCx()+x-radius,
-				f.getCy()+y-radius,
+		g.fillOval(x-radius,
+				y-radius,
 				radius*2, radius*2);
 	}
 	
