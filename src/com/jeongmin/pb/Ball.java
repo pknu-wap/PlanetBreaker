@@ -26,9 +26,9 @@ public class Ball {
 	
 	void checkBounds(){	//ball 이 벽에 부딪히면 반대 방향으로 
 		if(y<f.getTop()){vy = -vy; y = 2*f.getTop()-y;}
-		if(y>f.getBottom()){vy = -vy; y = 2*f.getBottom()-y;}
+		if(y+2*radius>f.getBottom()){vy = -vy; y = 2*f.getBottom()-y;}
 		if(x<f.getLeft()){vx = -vx; x = 2*f.getLeft()-x;}
-		if(x>f.getRight()){vx = -vx; x = 2*f.getRight()-x;}
+		if(x+2*radius>f.getRight()){vx = -vx; x = 2*f.getRight()-x;}
 	}
 	
 	int getX(){return x;}
