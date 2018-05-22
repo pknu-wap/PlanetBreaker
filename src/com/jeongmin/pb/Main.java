@@ -12,7 +12,7 @@ public class Main {
 	}
 	Main(){
 		field = new Field(320,240);			//鞘靛 积己
-		ball = new Ball(field);				//傍 积己
+		//ball = new Ball(field);				//傍 积己
 		
 		JPanel pan = new JPanel(null);
 		pan.setBackground(Color.BLACK);

@@ -5,19 +5,22 @@ import javax.swing.*;
 
 public class Field extends JPanel{
 	private int w,h;
-	Ball b;
+	Ball ball;
+	Brick brick;
 	Field(int wide, int high){	//Field 생성자
 		w = wide; h = high;		//폭, 높이
 		setSize(w,h);
 		setBackground(Color.white);
-		b = new Ball(this);
+		ball = new Ball(this);
+		brick = new Brick(this);
 	}
 	
 	int getLeft(){return 0;} int getRight(){return w;}
 	int getTop(){return 0;} int getBottom(){return h;}
 	public void paint(Graphics g) {
 		super.paint(g);
-		b.draw(g);
-		b.move();
+		ball.draw(g);
+		ball.move();
+		brick.draw(g);
 	}
 }
