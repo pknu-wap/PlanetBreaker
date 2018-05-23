@@ -8,8 +8,14 @@ public class Ball {
 	int radius;
 	double vx, vy;	//공 속도
 	
-	Ball(Field f){x = f.getRight()/2; y = f.getBottom()/2; vx = 3; vy = 3; this.f = f;}	//공 생성자
-	
+	Ball(Field f){ //공 생성자
+		x = f.getRight()/2;
+	    y = f.getBottom()/2; 
+	    vx = 3; 
+	    vy = 3; 
+	    this.f = f;
+	    }
+
 	void draw(Graphics g) {	//공 그리기
 		int radius = 5;
 		g.setColor(Color.black);

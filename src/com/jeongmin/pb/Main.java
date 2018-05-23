@@ -6,6 +6,7 @@ import javax.swing.*;
 public class Main {
 	Field field;
 	Ball ball;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new Main();
@@ -13,10 +14,10 @@ public class Main {
 	Main(){
 		field = new Field(320,240);			//鞘靛 积己
 		ball = new Ball(field);				//傍 积己
-		
 		JPanel pan = new JPanel(null);
 		pan.setBackground(Color.BLACK);
 		pan.add(field);
+		
 		field.setLocation(20,10);
 		
 		JFrame f = new JFrame("Planet Breaker");
