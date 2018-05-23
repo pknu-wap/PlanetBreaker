@@ -2,14 +2,14 @@ package com.jeongmin.pb;
 
 import java.awt.*;
 
-public class Ball {
+public class Ball_jeongmin {
 	String test;
-	Field f;
+	Field_jeongmin f;
 	int x,y;	//공 좌표
 	int radius;
 	double vx, vy;	//공 속도
 	
-	Ball(Field f){ //공 생성자
+	Ball_jeongmin(Field_jeongmin f){ //공 생성자
 		x = f.getRight()/2;
 	    y = f.getBottom()/2; 
 	    vx = 3; 

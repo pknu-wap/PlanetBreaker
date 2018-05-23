@@ -3,15 +3,15 @@ package com.jeongmin.pb;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Brick {
-	Field f;
-	Ball b;
+public class Brick_jeongmin {
+	Field_jeongmin f;
+	Ball_jeongmin b;
 	int x;
 	int y;
 	int width;
 	int height;
 	
-	Brick(Field f){
+	Brick_jeongmin(Field_jeongmin f){
 		this.f = f;
 		x = 100;
 		y = 100;
@@ -19,7 +19,7 @@ public class Brick {
 		height = 20;
 	}
 	
-	Brick(Field f, Ball b,int x, int y){
+	Brick_jeongmin(Field_jeongmin f, Ball_jeongmin b,int x, int y){
 		this.f = f;
 		this.x = x;
 		this.y = y;
@@ -33,7 +33,7 @@ public class Brick {
 		g.fillRect(x, y, width, height);
 	}
 	
-	void intersect(Ball b) {
+	void intersect(Ball_jeongmin b) {
 		double distance;
 		distance = Math.pow((double)((x+width/2)-(b.x+b.radius)), 2.0);
 		distance = distance + Math.pow((double)((y+height/2)-(b.y+b.radius)), 2.0);
