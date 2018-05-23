@@ -7,6 +7,7 @@ public class Ball {
 	int x,y;	//공 좌표
 	int radius;
 	double vx, vy;	//공 속도
+	int test;	//테스트를 위한 아무것도 아닌 변수
 	
 	Ball(Field f){x = f.getRight()/2; y = f.getBottom()/2; vx = 3; vy = 3; this.f = f;}	//공 생성자
 	
