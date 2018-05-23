@@ -3,12 +3,13 @@ package com.jeongmin.pb;
 import java.awt.*;
 
 public class Ball {
+	String test;
 	Field f;
-	int x,y;	//°ø ÁÂÇ¥
+	int x,y;	//ï¿½ï¿½ ï¿½ï¿½Ç¥
 	int radius;
-	double vx, vy;	//°ø ¼Óµµ
+	double vx, vy;	//ï¿½ï¿½ ï¿½Óµï¿½
 	
-	Ball(Field f){ //°ø »ý¼ºÀÚ
+	Ball(Field f){ //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		x = f.getRight()/2;
 	    y = f.getBottom()/2; 
 	    vx = 3; 
@@ -16,7 +17,7 @@ public class Ball {
 	    this.f = f;
 	    }
 
-	void draw(Graphics g) {	//°ø ±×¸®±â
+	void draw(Graphics g) {	//ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 		int radius = 5;
 		g.setColor(Color.black);
 		g.fillOval(x-radius,
@@ -26,11 +27,11 @@ public class Ball {
 	
 	void move(){
 		x = x + (int)vx; y = y + (int)vy;
-		System.out.println("°ø(" + x + ", " + y + ").");
-		checkBounds();					//ball ÀÌ º®¿¡ ºÎµúÀÌ¸é Æ¨±è
+		System.out.println("ï¿½ï¿½(" + x + ", " + y + ").");
+		checkBounds();					//ball ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½Ì¸ï¿½ Æ¨ï¿½ï¿½
 	}
 	
-	void checkBounds(){	//ball ÀÌ º®¿¡ ºÎµúÈ÷¸é ¹Ý´ë ¹æÇâÀ¸·Î 
+	void checkBounds(){	//ball ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		if(y<f.getTop()){vy = -vy; y = 2*f.getTop()-y;}
 		if(y+2*radius>f.getBottom()){vy = -vy; y = 2*f.getBottom()-y;}
 		if(x<f.getLeft()){vx = -vx; x = 2*f.getLeft()-x;}

@@ -12,13 +12,12 @@ public class Main {
 		new Main();
 	}
 	Main(){
-		field = new Field(320,240);			//ÇÊµå »ý¼º
-<<<<<<< HEAD
-		ball = new Ball(field);				//°ø »ý¼º
-=======
-		//ball = new Ball(field);				//°ø »ý¼º
-		
->>>>>>> 5f818a0a7659e3a1976af4d0fe578348d16b1233
+		field = new Field(320,240);			//ï¿½Êµï¿½ ï¿½ï¿½ï¿½ï¿½
+
+		ball = new Ball(field);				//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+		//ball = new Ball(field);				//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
 		JPanel pan = new JPanel(null);
 		pan.setBackground(Color.BLACK);
 		pan.add(field);
