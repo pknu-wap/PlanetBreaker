@@ -7,7 +7,12 @@ public class Ball {
 	Field f;
 	int x,y;	//ï¿½ï¿½ ï¿½ï¿½Ç¥
 	int radius;
+<<<<<<< HEAD
 	double vx, vy;	//ï¿½ï¿½ ï¿½Óµï¿½
+=======
+	double vx, vy;	//°ø ¼Óµµ
+	int test;	//Å×½ºÆ®¸¦ À§ÇÑ ¾Æ¹«°Íµµ ¾Æ´Ñ º¯¼ö
+>>>>>>> 019201acd319b0726ad69661f0dae2db73976cec
 	
 	Ball(Field f){ //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		x = f.getRight()/2;
