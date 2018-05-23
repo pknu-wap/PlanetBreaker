@@ -13,7 +13,12 @@ public class Main {
 	}
 	Main(){
 		field = new Field(320,240);			//鞘靛 积己
+<<<<<<< HEAD
 		ball = new Ball(field);				//傍 积己
+=======
+		//ball = new Ball(field);				//傍 积己
+		
+>>>>>>> 5f818a0a7659e3a1976af4d0fe578348d16b1233
 		JPanel pan = new JPanel(null);
 		pan.setBackground(Color.BLACK);
 		pan.add(field);
