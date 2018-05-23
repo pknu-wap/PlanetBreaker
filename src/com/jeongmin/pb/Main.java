@@ -12,17 +12,8 @@ public class Main {
 		new Main();
 	}
 	Main(){
-<<<<<<< HEAD
-		field = new Field(320,240);			//ï¿½Êµï¿½ ï¿½ï¿½ï¿½ï¿½
-
-		ball = new Ball(field);				//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-
-		//ball = new Ball(field);				//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-
-=======
 		field = new Field(320,240);			//ÇÊµå »ý¼º
 		ball = new Ball(field);				//°ø »ý¼º
->>>>>>> 019201acd319b0726ad69661f0dae2db73976cec
 		JPanel pan = new JPanel(null);
 		pan.setBackground(Color.BLACK);
 		pan.add(field);
