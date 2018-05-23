@@ -8,7 +8,7 @@ import java.awt.geom.Arc2D;
 
 import javax.swing.JPanel;
 
-class Bar extends JPanel implements KeyListener{
+class Bar_SKY extends JPanel implements KeyListener{
 	int center = 200;
 	int r = 100;
 	double x = r*Math.cos(Math.toRadians(90))+center;
@@ -20,7 +20,7 @@ class Bar extends JPanel implements KeyListener{
 	int B = -60;
 	
 	
-	public Bar() {
+	public Bar_SKY() {
 		addKeyListener(this);
 		requestFocus();
 		this.setFocusable(true);
