@@ -5,10 +5,10 @@ import java.awt.event.*;
 import java.awt.geom.*;
 import javax.swing.*;
 
-public class Main extends JFrame{
-	Bar bar = new Bar();
+public class Main_SKY extends JFrame{
+	Bar_SKY bar = new Bar_SKY();
 	
-	public Main() {
+	public Main_SKY() {
 		setSize(600,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Planet Breaker");
@@ -21,7 +21,7 @@ public class Main extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		new Main();
+		new Main_SKY();
 		
 	}
 
