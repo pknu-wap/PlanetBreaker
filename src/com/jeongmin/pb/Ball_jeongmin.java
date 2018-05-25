@@ -11,8 +11,8 @@ public class Ball_jeongmin {
 	Ball_jeongmin(Field_jeongmin field) { // °ø »ý¼ºÀÚ
 		x = field.getRight() / 2;
 		y = field.getBottom() / 2;
-		vx = 3;
-		vy = 3;
+		vx = 2;
+		vy = 2;
 		this.field = field;
 	}
 
@@ -31,19 +31,19 @@ public class Ball_jeongmin {
 	void checkBounds() { // °øÀÌ º®¿¡ ºÎµúÈ÷¸é Æ¨±è
 		if (y < field.getTop()) {
 			vy = -vy;
-			y = 2 * field.getTop() - y;
+			//y = 2 * field.getTop() - y;
 		}
 		if (y + 2 * radius > field.getBottom()) {
 			vy = -vy;
-			y = 2 * field.getBottom() - y;
+			//y = 2 * field.getBottom() - y;
 		}
 		if (x < field.getLeft()) {
 			vx = -vx;
-			x = 2 * field.getLeft() - x;
+			//x = 2 * field.getLeft() - x;
 		}
 		if (x + 2 * radius > field.getRight()) {
 			vx = -vx;
-			x = 2 * field.getRight() - x;
+			//x = 2 * field.getRight() - x;
 		}
 	}
 

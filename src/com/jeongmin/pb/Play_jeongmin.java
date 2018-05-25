@@ -16,10 +16,17 @@ public class Play_jeongmin {
 	Play_jeongmin() {
 		field = new Field_jeongmin(320, 240, this);
 		ball = new Ball_jeongmin(field);
-		brick = new Brick_jeongmin[3];
+		brick = new Brick_jeongmin[10];
 		brick[0] = new Brick_jeongmin(field, ball, 40, 40);
 		brick[1] = new Brick_jeongmin(field, ball, 70, 40);
 		brick[2] = new Brick_jeongmin(field, ball, 40, 70);
+		brick[3] = new Brick_jeongmin(field, ball, 70, 70);
+		brick[4] = new Brick_jeongmin(field, ball, 100, 70);
+		brick[5] = new Brick_jeongmin(field, ball, 100, 100);
+		brick[6] = new Brick_jeongmin(field, ball, 70, 100);
+		brick[7] = new Brick_jeongmin(field, ball, 100, 130);
+		brick[8] = new Brick_jeongmin(field, ball, 130, 130);
+		brick[9] = new Brick_jeongmin(field, ball, 160, 130);
 
 		JPanel pan = new JPanel(null);
 		pan.setBackground(Color.BLACK);
@@ -32,6 +39,8 @@ public class Play_jeongmin {
 		f.setVisible(true);
 		f.setResizable(false);
 		start(); // 시작
+		
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	void start() {
@@ -43,7 +52,7 @@ public class Play_jeongmin {
 			ball.move();
 			field.repaint(); // paint 호출
 			try {
-				Thread.sleep(20);
+				Thread.sleep(10);
 			} catch (Exception e) {
 			}
 		}

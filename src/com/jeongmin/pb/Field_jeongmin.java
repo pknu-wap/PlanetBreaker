@@ -37,5 +37,12 @@ public class Field_jeongmin extends JPanel {
 		play.brick[0].draw(g);
 		play.brick[1].draw(g);
 		play.brick[2].draw(g);
+		play.brick[3].draw(g);
+		play.brick[4].draw(g);
+		play.brick[5].draw(g);
+		play.brick[6].draw(g);
+		play.brick[7].draw(g);
+		play.brick[8].draw(g);
+		play.brick[9].draw(g);
 	}
 }
