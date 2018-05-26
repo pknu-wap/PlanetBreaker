@@ -9,7 +9,10 @@ public class Brick_jeongmin {
 	int y;
 	int width;
 	int height;
-
+	
+	int after_striking_x;
+	int after_striking_y;
+	
 	Brick_jeongmin(Field_jeongmin f, Ball_jeongmin b, int x, int y) {
 		this.f = f;
 		this.x = x;
@@ -17,6 +20,8 @@ public class Brick_jeongmin {
 		this.b = b;
 		width = 20;
 		height = 20;
+		after_striking_x = 1000;
+		after_striking_y = 1000;
 	}
 
 	void draw(Graphics g) {
@@ -26,35 +31,42 @@ public class Brick_jeongmin {
 	}
 
 	void intersect(Ball_jeongmin b) {
-		//double distance;
-		//distance = Math.pow((double) ((x + width / 2) - (b.x + b.radius)), 2.0);
-		//distance = distance + Math.pow((double) ((y + height / 2) - (b.y + b.radius)), 2.0);
-		//distance = Math.sqrt(distance);
-		//if (distance <= b.radius + (width / 2 + height / 2) / 2 + 5) {
-		//	b.vx = -(b.vx);
-		//	// b.vy = -(b.vy);
-		//}
-			
 		//공이 벽돌의 왼쪽면에 부딪혔을 경우
 		if(b.vx>=0) {
 			if((b.x>=x-2*b.radius&&b.x<=x-2*b.radius+1)&&(b.y<=y+height-b.radius+1&&b.y>=y-b.radius-1))
-				b.vx = -(b.vx);
+				{
+					b.vx = -(b.vx);
+					x = after_striking_x;
+					y = after_striking_y;
+				}
 		}
 		//공이 벽돌의 오른쪽면에 부딪혔을 경우
 		if(b.vx<=0) {
 			if((b.x>=x+width-1&&b.x<=x+width)&&(b.y<=y+height-b.radius+1&&b.y>=y-b.radius-1))
-				b.vx = -(b.vx);
+				{
+					b.vx = -(b.vx);
+					x = after_striking_x;
+					y = after_striking_y;
+				}
 		}
 		
 		//공이 벽돌의 윗면에 부딪혔을 경우
 		if(b.vy>=0) {
 			if((b.x>=x-b.radius-1&&b.x<=x+width-b.radius+1)&&(b.y>=y-2*b.radius-1&&b.y<=y-2*b.radius))
-				b.vy = -(b.vy);
+				{
+					b.vy = -(b.vy);
+					x = after_striking_x;
+					y = after_striking_y;
+				}
 		}
 		//공이 벽돌의 아래면에 부딪혔을 경우
 		if(b.vy<=0) {
 			if((b.x>=x-b.radius-1&&b.x<=x+width-b.radius+1)&&(b.y>=y+height&&b.y<=y+height+1))
-				b.vy = -(b.vy);
+				{
+					b.vy = -(b.vy);
+					x = after_striking_x;
+					y = after_striking_y;
+				}
 		}
 	}
 }
