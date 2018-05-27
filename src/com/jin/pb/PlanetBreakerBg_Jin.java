@@ -33,7 +33,7 @@ class BackGround extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try {
-			gimg = ImageIO.read(new File("bg.jpg")); // 이미지 읽기
+			gimg = ImageIO.read(new File("space_background.png")); // 이미지 읽기
 			timg = ImageIO.read(new File("title.jpg"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());

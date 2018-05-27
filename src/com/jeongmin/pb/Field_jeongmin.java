@@ -34,15 +34,7 @@ public class Field_jeongmin extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		play.ball.draw(g);
-		play.brick[0].draw(g);
-		play.brick[1].draw(g);
-		play.brick[2].draw(g);
-		play.brick[3].draw(g);
-		play.brick[4].draw(g);
-		play.brick[5].draw(g);
-		play.brick[6].draw(g);
-		play.brick[7].draw(g);
-		play.brick[8].draw(g);
-		play.brick[9].draw(g);
+		for(int i = 0;i<20;i++)
+			play.brick[i].draw(g);
 	}
 }
