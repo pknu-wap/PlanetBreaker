@@ -18,14 +18,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.jin.pb.BackGround.GPanel;
+
+
 class BackGround extends JFrame {
 	private JPanel startPanel,gamePanel;
 	private JButton sb, eb;
 	private BufferedImage gimg, timg;
+	
 
 	public BackGround() {
 		setTitle("PlanetBreaker");
-		setSize(600, 650);
+		setSize(600, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try {
@@ -38,8 +42,17 @@ class BackGround extends JFrame {
 
 		ButtonListener listener = new ButtonListener();
 		startPanel = new SPanel();
-		startPanel.setSize(600, 550);
+		startPanel.setSize(600, 600);
 		startPanel.setVisible(true);
+		startPanel.setLayout(null);
+		sb = new JButton("Game Start");
+		sb.setBounds(240, 400, 120, 30);
+		sb.addActionListener(listener);
+		startPanel.add(sb);
+		eb = new JButton("Exit");
+		eb.setBounds(240, 450, 120, 30);
+		eb.addActionListener(listener);
+		startPanel.add(eb);
 		add(startPanel, BorderLayout.CENTER);
 		
 		gamePanel = new GPanel();
@@ -47,17 +60,9 @@ class BackGround extends JFrame {
 		gamePanel.setBackground(Color.GRAY);
 		gamePanel.setVisible(false);
 		add(gamePanel, BorderLayout.CENTER);
-
-		JPanel bPanel = new JPanel();
-		sb = new JButton("Game Start");
-		sb.addActionListener(listener);
-		bPanel.add(sb);
-		eb = new JButton("Exit");
-		eb.addActionListener(listener);
-		bPanel.add(eb);
-
-		add(bPanel, BorderLayout.PAGE_END);
+		
 		setVisible(true);
+		setResizable(false);
 	}
 
 	class SPanel extends JPanel {
@@ -91,7 +96,7 @@ class BackGround extends JFrame {
 	}
 }
 
-public class PlanetBreakerBg {
+public class PlanetBreakerBg_Jin {
 
 	public static void main(String[] args) {
 		BackGround b = new BackGround();
