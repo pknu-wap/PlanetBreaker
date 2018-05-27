@@ -1,6 +1,11 @@
 package com.jeongmin.pb;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Play_jeongmin {
@@ -8,6 +13,7 @@ public class Play_jeongmin {
 	Brick_jeongmin[] brick;
 	Field_jeongmin field;
 	int breaked_brick_number;
+	private BufferedImage image;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -15,7 +21,7 @@ public class Play_jeongmin {
 	}
 
 	Play_jeongmin() {
-		field = new Field_jeongmin(320, 240, this);
+		field = new Field_jeongmin(600, 580, this);
 		ball = new Ball_jeongmin(field);
 		brick = new Brick_jeongmin[20];
 		breaked_brick_number = 0;
@@ -39,15 +45,21 @@ public class Play_jeongmin {
 		brick[17] = new Brick_jeongmin(field, ball, 100, 130);
 		brick[18] = new Brick_jeongmin(field, ball, 130, 130);
 		brick[19] = new Brick_jeongmin(field, ball, 160, 130);
+		
+		try {
+			image = ImageIO.read(new File("space_background.png")); // 이미지 읽기
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+			System.exit(0); // 오류발생시 메세지 출력 및 종료
+		}
 
 		JPanel pan = new JPanel(null);
-		pan.setBackground(Color.BLACK);
 		pan.add(field);
-		field.setLocation(20, 10);
+		field.setLocation(0, 0);
 
 		JFrame f = new JFrame("Planet Breaker");
 		f.getContentPane().add(pan);
-		f.setSize(320 + 65, 240 + 60);
+		f.setSize(600, 600);
 		f.setVisible(true);
 		f.setResizable(false);
 		start(); // 시작

@@ -20,7 +20,7 @@ public class Ball_jeongmin {
 
 	void draw(Graphics g) { // °ø ±×¸®±â
 		int radius = 5;
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
 	}
 
@@ -33,19 +33,19 @@ public class Ball_jeongmin {
 	void checkBounds() { // °øÀÌ º®¿¡ ºÎµúÈ÷¸é Æ¨±è
 		if (y < field.getTop()) {
 			vy = -vy;
-			//y = 2 * field.getTop() - y;
+			y = 2 * field.getTop() - y;
 		}
 		if (y + 2 * radius > field.getBottom()) {
 			vy = -vy;
-			//y = 2 * field.getBottom() - y;
+			y = 2 * field.getBottom() - y;
 		}
 		if (x < field.getLeft()) {
 			vx = -vx;
-			//x = 2 * field.getLeft() - x;
+			x = 2 * field.getLeft() - x;
 		}
 		if (x + 2 * radius > field.getRight()) {
 			vx = -vx;
-			//x = 2 * field.getRight() - x;
+			x = 2 * field.getRight() - x;
 		}
 	}
 
