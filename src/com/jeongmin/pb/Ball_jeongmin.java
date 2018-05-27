@@ -9,8 +9,10 @@ public class Ball_jeongmin {
 	double vx, vy; // 공 속도
 
 	Ball_jeongmin(Field_jeongmin field) { // 공 생성자
-		x = field.getRight() / 2;
-		y = field.getBottom() / 2;
+		//x = field.getRight() / 2;
+		//y = field.getBottom() / 2;
+		x = 130;
+		y = 200;
 		vx = 2;
 		vy = 2;
 		this.field = field;
