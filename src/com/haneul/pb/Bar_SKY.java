@@ -11,6 +11,12 @@ import javax.swing.JPanel;
 
 class Bar_SKY extends JPanel implements KeyListener{
 	String test;
+	private int frameX1 = 80;
+	private int frameY1 = 80;
+	private int frameD = 400;
+	private int frameX2 = frameX1 + frameD;
+	private int frameY2 = frameY1 + frameD;
+	private int space = 5;
 	private int w = 100;			//바의 크기
 	private int h = 30;				//바의 높이
 	private int x1=230;				//바의 x좌표
@@ -32,46 +38,45 @@ class Bar_SKY extends JPanel implements KeyListener{
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawRect(80,80,400,400);
+		g.drawRect(frameX1,frameY1,frameD,frameD);
 		g.drawRect(x1, y1, w, h);
 	}
 	public void move(int a){
 		System.out.println(x1+"  "+y1+" "+num);
-		int tmp;
-
+		
 		switch(a) {
 		case 0:
-			if(x1>=80&&x1<380&&num==0) x1+=dx;
-			if(y1>80&&y1<380&&num==1) y1-=dx;
-			if(x1>=80&&x1<380&&num==2) x1-=dx;
-			if(y1>80&&y1<380&&num==3) y1+=dx;
+			if(x1>frameX1&&x1<frameX2-w&&num==0) x1+=dx;
+			if(y1>frameY1&&y1<frameY2-h&&num==1) y1-=dx;
+			if(x1>frameX1&&x1<frameX2-w&&num==2) x1-=dx;
+			if(y1>frameX1&&y1<frameX2-h&&num==3) y1+=dx;
 			break;
 		case 1:
-			if(x1>=80&&x1<380&&num==0) x1-=dx;
-			if(y1>80&&y1<380&&num==1) y1+=dx;
-			if(x1>=80&&x1<380&&num==2) x1+=dx;
-			if(y1>80&&y1<380&&num==3) y1-=dx;
+			if(x1>frameX1&&x1<frameX2-w&&num==0) x1-=dx;
+			if(y1>frameY1&&y1<frameY2-h&&num==1) y1+=dx;
+			if(x1>frameX1&&x1<frameX2-w&&num==2) x1+=dx;
+			if(y1>frameX1&&y1<frameX2-h&&num==3) y1-=dx;
 			break;
 		}
 	
 	}
 	public void jump() {
 		//0 -> 1
-		if(x1>=380&&num==0) {
-			x1 = 440;
-			y1 = 370;
+		if(x1>=frameX2-w&&num==0) {
+			x1 = frameX2-h-space;
+			y1 = frameY2-w-space;
 			changewh();
 			num=1;
 		}
 		//1 -> 2
-		if(y1<=80&&num==1) {
-			x1 = 370;
-			y1 = 90;
+		if(y1<=frameY1&&num==1) {
+			x1 = frameX2-h-space;
+			y1 = frameY1+space;
 			changewh();
 			num=2;
 		}
 		//2 -> 3
-		if(x1<=80&&num==2) {
+		if(x1<=frameX1&&num==2) {
 			x1 = 90;
 			y1 = 90;
 			changewh();
