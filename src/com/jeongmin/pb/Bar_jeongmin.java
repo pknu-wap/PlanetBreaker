@@ -10,17 +10,17 @@ import java.awt.geom.Arc2D;
 import javax.swing.JPanel;
 
 class Bar_jeongmin {
-	String test;
-	int frameX1 = 80;
-	int frameY1 = 80;
-	int frameD = 400;
-	int frameX2 = frameX1 + frameD;
-	int frameY2 = frameY1 + frameD;
-	int space = 5;
+	private int frameX1 = 50;
+	private int frameY1 = 50;
+	private int frameD = 480;
+	private int frameX2 = frameX1 + frameD;
+	private int frameY2 = frameY1 + frameD;
+	private int space = 10;
+	
 	int w = 100;			//바의 크기
-	int h = 30;				//바의 높이
-	int x1=230;				//바의 x좌표
-	int y1=440;				//바의 y좌표
+	int h = 20;				//바의 높이
+	int x1=frameX1+frameD/2-w/2;	//바의 x좌표
+	int y1=frameY2-space-h;				//바의 y좌표
 	int x2 = x1+w;			
 	int y2 = y1+h;
 	int dx=5;				//바의 속도
@@ -52,63 +52,68 @@ class Bar_jeongmin {
 			if(y1>frameX1&&y1<frameX2-h&&num==3) y1-=dx;
 			break;
 		}
-	
 	}
-	public void jump() {
-		//0 -> 1
-		if(x1>=frameX2-w&&num==0) {
-			x1 = frameX2-h-space;
-			y1 = frameY2-w-space;
-			changewh();
-			num=1;
-		}
-		//1 -> 2
-		if(y1<=frameY1&&num==1) {
-			x1 = frameX2-h-space;
-			y1 = frameY1+space;
-			changewh();
-			num=2;
-		}
-		//2 -> 3
-		if(x1<=frameX1&&num==2) {
-			x1 = 90;
-			y1 = 90;
-			changewh();
-			num=3;
-		}//3 -> 0
-		if(y1>=380&&num==3) {
-			x1 = 90;
-			y1 = 440;
-			changewh();
-			num=0;
-		}
-		//0 -> 3
-		if(x1<=80&&num==0) {
-			x1 = 90;
-			y1 = 370;
-			changewh();
-			num=3;
-		}
-		//3 -> 2
-		if(y1<=80&&num==3) {
-			x1 = 90;
-			y1 = 90;
-			changewh();
-			num=2;
-		}
-		//2 -> 1
-		if(x1>=380&&num==2) {
-			x1 = 440;
-			y1 = 90;
-			changewh();
-			num=1;
-		}
-		//1 -> 0
-		if(y1>=380&&num==1) {
-			x1 = 370;
-			y1 = 440;
-			changewh();
-			num=0;
+	public void jump(int a) {
+		switch(a) {
+		case 0:
+			//0 -> 1
+			if(x1>=frameX2-w&&num==0) {
+				x1 = frameX2-h-space;
+				y1 = frameY2-w-space;
+				changewh();
+				num=1;
+			}
+			//1 -> 2
+			if(y1<=frameY1&&num==1) {
+				x1 = frameX2-h-space;
+				y1 = frameY1+space;
+				changewh();
+				num=2;
+			}
+			//2 -> 3
+			if(x1<=frameX1&&num==2) {
+				x1 = frameX1+space;
+				y1 = frameY1+space;
+				changewh();
+				num=3;
+			}//3 -> 0
+			if(y1>=frameY2-h&&num==3) {
+				x1 = frameX1+space;
+				y1 = frameY2-w-space;
+				changewh();
+				num=0;
+			}
+			break;
+		case 1:
+			//0 -> 3
+			if(x1<=frameX1&&num==0) {
+				x1 = frameX1+space;
+				y1 = frameY2-w-space;
+				changewh();
+				num=3;
+			}
+			//3 -> 2
+			if(y1<=frameY1&&num==3) {
+				x1 = frameX1+space;
+				y1 = frameY1+space;
+				changewh();
+				num=2;
+			}
+			//2 -> 1
+			if(x1>=frameX2-w&&num==2) {
+				x1 = frameX2-h-space;
+				y1 = frameY1+space;
+				changewh();
+				num=1;
+			}
+			//1 -> 0
+			if(y1>=frameY2-h&&num==1) {
+				x1 = frameX2-h-space;
+				y1 = frameY2-w-space;
+				changewh();
+				num=0;
+			}
+			break;
 		}
 	}
 	public void changewh() {
