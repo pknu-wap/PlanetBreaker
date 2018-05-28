@@ -68,7 +68,10 @@ public class Field_jeongmin extends JPanel implements KeyListener{
 			play.bar.dx = 30;
 			//repaint();
 			break;
-			
+		case KeyEvent.VK_UP:
+			play.ball.vx = 2;
+			play.ball.vy = 2;
+			break;
 		}
 	}
 	public void keyReleased(KeyEvent e) {
