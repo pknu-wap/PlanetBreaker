@@ -10,17 +10,17 @@ import java.awt.geom.Arc2D;
 import javax.swing.JPanel;
 
 class Bar_jeongmin {
-	private int frameX1 = 80;
-	private int frameY1 = 80;
-	private int frameD = 400;
+	private int frameX1 = 50;
+	private int frameY1 = 50;
+	private int frameD = 480;
 	private int frameX2 = frameX1 + frameD;
 	private int frameY2 = frameY1 + frameD;
 	private int space = 10;
 	
 	int w = 100;			//바의 크기
-	int h = 30;				//바의 높이
-	int x1=230;				//바의 x좌표
-	int y1=440;				//바의 y좌표
+	int h = 20;				//바의 높이
+	int x1=frameX1+frameD/2-w/2;	//바의 x좌표
+	int y1=frameY2-space-h;				//바의 y좌표
 	int x2 = x1+w;			
 	int y2 = y1+h;
 	int dx=5;				//바의 속도
@@ -52,7 +52,6 @@ class Bar_jeongmin {
 			if(y1>frameX1&&y1<frameX2-h&&num==3) y1-=dx;
 			break;
 		}
-	
 	}
 	public void jump(int a) {
 		switch(a) {
