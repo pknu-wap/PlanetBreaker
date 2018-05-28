@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.TexturePaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,20 +15,54 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.jin.pb.BackGround.GPanel;
+public class PlanetBreakerBg_Jin extends JFrame {
+	Ball_jin ball;
+	Brick_jin[] brick;
+	Field_jin field;
+	int breaked_brick_number;
 
-
-class BackGround extends JFrame {
+	public static void main(String[] args) {
+		PlanetBreakerBg_Jin pb = new PlanetBreakerBg_Jin();
+	}
 	private JPanel startPanel,gamePanel;
 	private JButton sb, eb;
 	private BufferedImage gimg, timg;
-	
+	private Image bg;
 
-	public BackGround() {
+	public PlanetBreakerBg_Jin() {
+		field = new Field_jin(500, 500, this);
+		field.setLocation(50,50);
+		field.setSize(100,100);
+		ball = new Ball_jin(field);
+		brick = new Brick_jin[20];
+		breaked_brick_number = 0;
+		
+		brick[0] = new Brick_jin(field, ball, 40, 40);
+		brick[1] = new Brick_jin(field, ball, 70, 40);
+		brick[2] = new Brick_jin(field, ball, 100, 40);
+		brick[3] = new Brick_jin(field, ball, 130, 40);
+		brick[4] = new Brick_jin(field, ball, 160, 40);
+		brick[5] = new Brick_jin(field, ball, 40, 70);
+		brick[6] = new Brick_jin(field, ball, 70, 70);
+		brick[7] = new Brick_jin(field, ball, 100, 70);
+		brick[8] = new Brick_jin(field, ball, 130, 70);
+		brick[9] = new Brick_jin(field, ball, 160, 70);
+		brick[10] = new Brick_jin(field, ball, 40, 100);
+		brick[11] = new Brick_jin(field, ball, 70, 100);
+		brick[12] = new Brick_jin(field, ball, 100, 100);
+		brick[13] = new Brick_jin(field, ball, 130, 100);
+		brick[14] = new Brick_jin(field, ball, 160, 100);
+		brick[15] = new Brick_jin(field, ball, 40, 130);
+		brick[16] = new Brick_jin(field, ball, 70, 130);
+		brick[17] = new Brick_jin(field, ball, 100, 130);
+		brick[18] = new Brick_jin(field, ball, 130, 130);
+		brick[19] = new Brick_jin(field, ball, 160, 130);
+		
 		setTitle("PlanetBreaker");
 		setSize(600, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,13 +88,14 @@ class BackGround extends JFrame {
 		eb.setBounds(240, 450, 120, 30);
 		eb.addActionListener(listener);
 		startPanel.add(eb);
-		add(startPanel, BorderLayout.CENTER);
-		
+		add(startPanel);
 		gamePanel = new GPanel();
+		gamePanel.add(field);
 		gamePanel.setSize(600, 600);
 		gamePanel.setBackground(Color.GRAY);
 		gamePanel.setVisible(false);
-		add(gamePanel, BorderLayout.CENTER);
+		
+		add(gamePanel);
 		
 		setVisible(true);
 		setResizable(false);
@@ -75,11 +111,13 @@ class BackGround extends JFrame {
 	class GPanel extends JPanel {
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			Graphics2D g2d = (Graphics2D) g;
+			BufferedImage bf=new BufferedImage(600,600,BufferedImage.TYPE_INT_ARGB);
+			Graphics2D g2d = bf.createGraphics();
 			Rectangle2D rect = new Rectangle2D.Double(50, 50, 500, 500);
 			g2d.setPaint(new TexturePaint(gimg, rect));
 			Ellipse2D oval = new Ellipse2D.Double(50, 50, 500, 500);
 			g2d.fill(oval);
+			
 		}
 	}
 
@@ -88,18 +126,37 @@ class BackGround extends JFrame {
 			if (e.getSource() == sb) { // 1번버튼을 누르면 실행
 				startPanel.setVisible(false);
 				gamePanel.setVisible(true);
+				field.setVisible(true);
 			} // 게임을 다시 실행
 			else if (e.getSource() == eb) { // 2번버튼을 누르면 실행
 				System.exit(0);
 			} // 게임을 종료
 		}
 	}
+	void start() {
+		breaking();
+	}
+
+	void breaking() {
+		while (true) {
+			ball.move();
+			field.repaint(); // paint 호출
+			try {
+				Thread.sleep(10);
+			} catch (Exception e) {
+			}
+		}
+	}
 }
 
-public class PlanetBreakerBg_Jin {
+/*public class PlanetBreakerBg_Jin {
+	Ball_jin ball;
+	Brick_jin[] brick;
+	Field_jin field;
+	int breaked_brick_number;
 
 	public static void main(String[] args) {
 		BackGround b = new BackGround();
 	}
 
-}
+}*/
