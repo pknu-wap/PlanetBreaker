@@ -12,6 +12,7 @@ public class Play_jeongmin {
 	Ball_jeongmin ball;
 	Brick_jeongmin[] brick;
 	Field_jeongmin field;
+	Bar_jeongmin bar;
 	int breaked_brick_number;
 	private BufferedImage image;
 
@@ -23,6 +24,7 @@ public class Play_jeongmin {
 	Play_jeongmin() {
 		field = new Field_jeongmin(600, 580, this);
 		ball = new Ball_jeongmin(field);
+		bar = new Bar_jeongmin();
 		brick = new Brick_jeongmin[20];
 		breaked_brick_number = 0;
 		brick[0] = new Brick_jeongmin(field, ball, 40, 40,4);
@@ -47,10 +49,10 @@ public class Play_jeongmin {
 		brick[19] = new Brick_jeongmin(field, ball, 160, 130,1);
 		
 		try {
-			image = ImageIO.read(new File("space_background.png")); // ÀÌ¹ÌÁö ÀÐ±â
+			image = ImageIO.read(new File("space_background.png")); //ë°°ê²½í™”ë©´
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
-			System.exit(0); // ¿À·ù¹ß»ý½Ã ¸Þ¼¼Áö Ãâ·Â ¹× Á¾·á
+			System.exit(0);
 		}
 
 		JPanel pan = new JPanel(null);
@@ -62,7 +64,7 @@ public class Play_jeongmin {
 		f.setSize(600, 600);
 		f.setVisible(true);
 		f.setResizable(false);
-		start(); // ½ÃÀÛ
+		start();
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -74,7 +76,7 @@ public class Play_jeongmin {
 	void breaking() {
 		while (true) {
 			ball.move();
-			field.repaint(); // paint È£Ãâ
+			field.repaint();
 			try {
 				Thread.sleep(10);
 			} catch (Exception e) {

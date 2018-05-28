@@ -4,11 +4,11 @@ import java.awt.*;
 
 public class Ball_jeongmin {
 	Field_jeongmin field;
-	int x, y; // °ø ÁÂÇ¥
+	int x, y; // ê³µ ì¢Œí‘œ
 	int radius;
-	double vx, vy; // °ø ¼Óµµ
+	double vx, vy; // ê³µ ì†ë„
 
-	Ball_jeongmin(Field_jeongmin field) { // °ø »ı¼ºÀÚ
+	Ball_jeongmin(Field_jeongmin field) { //ê³µ ìƒì„±ì
 		//x = field.getRight() / 2;
 		//y = field.getBottom() / 2;
 		x = 130;
@@ -18,7 +18,7 @@ public class Ball_jeongmin {
 		this.field = field;
 	}
 
-	void draw(Graphics g) { // °ø ±×¸®±â
+	void draw(Graphics g) { //ê³µ ê·¸ë¦¬ê¸°
 		int radius = 5;
 		g.setColor(Color.white);
 		g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
@@ -30,7 +30,7 @@ public class Ball_jeongmin {
 		checkBounds();
 	}
 
-	void checkBounds() { // °øÀÌ º®¿¡ ºÎµúÈ÷¸é Æ¨±è
+	void checkBounds() { //ë²½ì— ë¶€ë”ªí˜”ëŠ”ì§€ ì²´í¬
 		if (y < field.getTop()) {
 			vy = -vy;
 			y = 2 * field.getTop() - y;

@@ -16,7 +16,7 @@ public class Brick_jeongmin {
 	int basic_x;
 	int basic_y;
 	
-	int armor;	//armor¸¸Å­ ball°ú Ãæµ¹ÇØ¾ß º®µ¹ÀÌ ±úÁü
+	int armor;	//armorë§Œí¼ ë¶€ë”ªí˜€ì•¼ ë²½ëŒ ì‚¬ë¼ì§
 	
 	Brick_jeongmin(Field_jeongmin f, Ball_jeongmin b, int x, int y, int armor) {
 		this.x = x;
@@ -51,7 +51,7 @@ public class Brick_jeongmin {
 	}
 
 	void intersect(Ball_jeongmin b) {
-		//°øÀÌ º®µ¹ÀÇ ¿ŞÂÊ¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ì™¼ìª½ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vx>=0) {
 			if((b.x>=x-2*b.radius&&b.x<=x-2*b.radius+1)&&(b.y<=y+height-b.radius+1&&b.y>=y-b.radius-1))
 				{
@@ -63,7 +63,7 @@ public class Brick_jeongmin {
 					}
 				}
 		}
-		//°øÀÌ º®µ¹ÀÇ ¿À¸¥ÂÊ¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ì˜¤ë¡ ìª½ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vx<=0) {
 			if((b.x>=x+width-1&&b.x<=x+width)&&(b.y<=y+height-b.radius+1&&b.y>=y-b.radius-1))
 				{
@@ -76,7 +76,7 @@ public class Brick_jeongmin {
 				}
 		}
 		
-		//°øÀÌ º®µ¹ÀÇ À­¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ìœ—ë©´ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vy>=0) {
 			if((b.x>=x-b.radius-1&&b.x<=x+width-b.radius+1)&&(b.y>=y-2*b.radius-1&&b.y<=y-2*b.radius))
 				{
@@ -88,7 +88,7 @@ public class Brick_jeongmin {
 					}
 				}
 		}
-		//°øÀÌ º®µ¹ÀÇ ¾Æ·¡¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ì•„ë˜ë©´ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vy<=0) {
 			if((b.x>=x-b.radius-1&&b.x<=x+width-b.radius+1)&&(b.y>=y+height&&b.y<=y+height+1))
 				{
