@@ -4,23 +4,23 @@ import java.awt.*;
 
 public class Ball_jeongmin {
 	Field_jeongmin field;
-	int x, y; // °ø ÁÂÇ¥
+	int x, y; // ê³µ ì¢Œí‘œ
 	int radius;
-	double vx, vy; // °ø ¼Óµµ
+	double vx, vy; // ê³µ ì†ë„
 
-	Ball_jeongmin(Field_jeongmin field) { // °ø »ı¼ºÀÚ
+	Ball_jeongmin(Field_jeongmin field) { //ê³µ ìƒì„±ì
 		//x = field.getRight() / 2;
 		//y = field.getBottom() / 2;
 		x = 130;
 		y = 200;
-		vx = 2;
-		vy = 2;
+		vx = 0;
+		vy = 0;
 		this.field = field;
 	}
 
-	void draw(Graphics g) { // °ø ±×¸®±â
+	void draw(Graphics g) { //ê³µ ê·¸ë¦¬ê¸°
 		int radius = 5;
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
 	}
 
@@ -30,22 +30,22 @@ public class Ball_jeongmin {
 		checkBounds();
 	}
 
-	void checkBounds() { // °øÀÌ º®¿¡ ºÎµúÈ÷¸é Æ¨±è
+	void checkBounds() { //ë²½ì— ë¶€ë”ªí˜”ëŠ”ì§€ ì²´í¬
 		if (y < field.getTop()) {
 			vy = -vy;
-			//y = 2 * field.getTop() - y;
+			y = 2 * field.getTop() - y;
 		}
 		if (y + 2 * radius > field.getBottom()) {
 			vy = -vy;
-			//y = 2 * field.getBottom() - y;
+			y = 2 * field.getBottom() - y;
 		}
 		if (x < field.getLeft()) {
 			vx = -vx;
-			//x = 2 * field.getLeft() - x;
+			x = 2 * field.getLeft() - x;
 		}
 		if (x + 2 * radius > field.getRight()) {
 			vx = -vx;
-			//x = 2 * field.getRight() - x;
+			x = 2 * field.getRight() - x;
 		}
 	}
 

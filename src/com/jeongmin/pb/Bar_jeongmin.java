@@ -1,4 +1,4 @@
-package com.haneul.pb;
+package com.jeongmin.pb;
 
 
 import java.awt.Color;
@@ -9,36 +9,29 @@ import java.awt.event.KeyListener;
 import java.awt.geom.Arc2D;
 import javax.swing.JPanel;
 
-class Bar_SKY extends JPanel implements KeyListener{
-	//공간의 크기
-	private int frameX1 = 80;
-	private int frameY1 = 80;
-	private int frameD = 400;
+class Bar_jeongmin {
+	private int frameX1 = 50;
+	private int frameY1 = 50;
+	private int frameD = 480;
 	private int frameX2 = frameX1 + frameD;
 	private int frameY2 = frameY1 + frameD;
 	private int space = 10;
 	
-	private int w = 100;			//바의 크기
-	private int h = 20;				//바의 높이
-	private int x1=frameX1+frameD/2;				//바의 x좌표
-	private int y1=frameY2-h-space;				//바의 y좌표
-	private int x2 = x1+w;			
-	private int y2 = y1+h;
-	private int dx=5;				//바의 속도
+	int w = 100;			//바의 크기
+	int h = 20;				//바의 높이
+	int x1=frameX1+frameD/2-w/2;	//바의 x좌표
+	int y1=frameY2-space-h;				//바의 y좌표
+	int x2 = x1+w;			
+	int y2 = y1+h;
+	int dx=5;				//바의 속도
 	int num=0;						//면의 번호
-	private int cx,cy;				//충돌 좌표
-	private int bx,by;				//공의 좌표
+	int cx,cy;				//충돌 좌표
+	int bx,by;				//공의 좌표
 	
 	
-	public Bar_SKY() {
-		addKeyListener(this);
-		setFocusable(true);
-		requestFocus();
-		
-		
-	}
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	public Bar_jeongmin() {}
+	public void draw(Graphics g) {
+		//super.paintComponent(g);
 		g.drawRect(frameX1,frameY1,frameD,frameD);
 		g.drawRect(x1, y1, w, h);
 	}
@@ -59,7 +52,6 @@ class Bar_SKY extends JPanel implements KeyListener{
 			if(y1>frameX1&&y1<frameX2-h&&num==3) y1-=dx;
 			break;
 		}
-	
 	}
 	public void jump(int a) {
 		switch(a) {
@@ -123,8 +115,6 @@ class Bar_SKY extends JPanel implements KeyListener{
 			}
 			break;
 		}
-		
-		
 	}
 	public void changewh() {
 		int tmp;
@@ -135,31 +125,4 @@ class Bar_SKY extends JPanel implements KeyListener{
 	public void crashPoint() {
 		
 	}
-
-	public void keyPressed(KeyEvent e) {
-		int keycode =  e.getKeyCode();
-		switch(keycode) {
-		case KeyEvent.VK_RIGHT:
-			move(0);
-			jump(0);
-			repaint();
-			break;
-		case KeyEvent.VK_LEFT:
-			move(1);
-			jump(1);
-			repaint();
-			break;
-		case KeyEvent.VK_SPACE:
-			dx = 30;
-			repaint();
-			break;
-			
-		}
-	}
-	public void keyReleased(KeyEvent e) {
-		int keycode =e.getKeyCode();
-		if(keycode == KeyEvent.VK_SPACE)
-			dx = 5;
-	}
-	public void keyTyped(KeyEvent arg0) {}
 }

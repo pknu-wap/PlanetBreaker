@@ -1,56 +1,70 @@
 package com.jeongmin.pb;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Play_jeongmin {
 	Ball_jeongmin ball;
 	Brick_jeongmin[] brick;
 	Field_jeongmin field;
+	Bar_jeongmin bar;
 	int breaked_brick_number;
+	private BufferedImage image;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		 //TODO Auto-generated method stub
 		new Play_jeongmin();
 	}
 
 	Play_jeongmin() {
-		field = new Field_jeongmin(320, 240, this);
+		field = new Field_jeongmin(600, 580, this);
 		ball = new Ball_jeongmin(field);
+		bar = new Bar_jeongmin();
 		brick = new Brick_jeongmin[20];
 		breaked_brick_number = 0;
-		brick[0] = new Brick_jeongmin(field, ball, 40, 40);
-		brick[1] = new Brick_jeongmin(field, ball, 70, 40);
-		brick[2] = new Brick_jeongmin(field, ball, 100, 40);
-		brick[3] = new Brick_jeongmin(field, ball, 130, 40);
-		brick[4] = new Brick_jeongmin(field, ball, 160, 40);
-		brick[5] = new Brick_jeongmin(field, ball, 40, 70);
-		brick[6] = new Brick_jeongmin(field, ball, 70, 70);
-		brick[7] = new Brick_jeongmin(field, ball, 100, 70);
-		brick[8] = new Brick_jeongmin(field, ball, 130, 70);
-		brick[9] = new Brick_jeongmin(field, ball, 160, 70);
-		brick[10] = new Brick_jeongmin(field, ball, 40, 100);
-		brick[11] = new Brick_jeongmin(field, ball, 70, 100);
-		brick[12] = new Brick_jeongmin(field, ball, 100, 100);
-		brick[13] = new Brick_jeongmin(field, ball, 130, 100);
-		brick[14] = new Brick_jeongmin(field, ball, 160, 100);
-		brick[15] = new Brick_jeongmin(field, ball, 40, 130);
-		brick[16] = new Brick_jeongmin(field, ball, 70, 130);
-		brick[17] = new Brick_jeongmin(field, ball, 100, 130);
-		brick[18] = new Brick_jeongmin(field, ball, 130, 130);
-		brick[19] = new Brick_jeongmin(field, ball, 160, 130);
+		brick[0] = new Brick_jeongmin(field, ball, 40, 40,4);
+		brick[1] = new Brick_jeongmin(field, ball, 70, 40,4);
+		brick[2] = new Brick_jeongmin(field, ball, 100, 40,4);
+		brick[3] = new Brick_jeongmin(field, ball, 130, 40,4);
+		brick[4] = new Brick_jeongmin(field, ball, 160, 40,4);
+		brick[5] = new Brick_jeongmin(field, ball, 40, 70,3);
+		brick[6] = new Brick_jeongmin(field, ball, 70, 70,3);
+		brick[7] = new Brick_jeongmin(field, ball, 100, 70,3);
+		brick[8] = new Brick_jeongmin(field, ball, 130, 70,3);
+		brick[9] = new Brick_jeongmin(field, ball, 160, 70,3);
+		brick[10] = new Brick_jeongmin(field, ball, 40, 100,2);
+		brick[11] = new Brick_jeongmin(field, ball, 70, 100,2);
+		brick[12] = new Brick_jeongmin(field, ball, 100, 100,2);
+		brick[13] = new Brick_jeongmin(field, ball, 130, 100,2);
+		brick[14] = new Brick_jeongmin(field, ball, 160, 100,2);
+		brick[15] = new Brick_jeongmin(field, ball, 40, 130,1);
+		brick[16] = new Brick_jeongmin(field, ball, 70, 130,1);
+		brick[17] = new Brick_jeongmin(field, ball, 100, 130,1);
+		brick[18] = new Brick_jeongmin(field, ball, 130, 130,1);
+		brick[19] = new Brick_jeongmin(field, ball, 160, 130,1);
+		
+		try {
+			image = ImageIO.read(new File("space_background.png")); //ë°°ê²½í™”ë©´
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+			System.exit(0);
+		}
 
 		JPanel pan = new JPanel(null);
-		pan.setBackground(Color.BLACK);
 		pan.add(field);
-		field.setLocation(20, 10);
+		field.setLocation(0, 0);
 
 		JFrame f = new JFrame("Planet Breaker");
 		f.getContentPane().add(pan);
-		f.setSize(320 + 65, 240 + 60);
+		f.setSize(600, 600);
 		f.setVisible(true);
 		f.setResizable(false);
-		start(); // ½ÃÀÛ
+		start();
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -62,7 +76,7 @@ public class Play_jeongmin {
 	void breaking() {
 		while (true) {
 			ball.move();
-			field.repaint(); // paint È£Ãâ
+			field.repaint();
 			try {
 				Thread.sleep(10);
 			} catch (Exception e) {

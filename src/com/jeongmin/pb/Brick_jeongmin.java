@@ -13,59 +13,91 @@ public class Brick_jeongmin {
 	int after_striking_x;
 	int after_striking_y;
 	
-	Brick_jeongmin(Field_jeongmin f, Ball_jeongmin b, int x, int y) {
-		this.f = f;
+	int basic_x;
+	int basic_y;
+	
+	int armor;	//armorë§Œí¼ ë¶€ë”ªí˜€ì•¼ ë²½ëŒ ì‚¬ë¼ì§
+	
+	Brick_jeongmin(Field_jeongmin f, Ball_jeongmin b, int x, int y, int armor) {
 		this.x = x;
 		this.y = y;
+		
 		this.b = b;
+		this.f = f;
+		
 		width = 20;
 		height = 20;
+		
+		basic_x = x;
+		basic_y = y;
+		
 		after_striking_x = 1000;
 		after_striking_y = 1000;
+		
+		this.armor = armor;
 	}
 
 	void draw(Graphics g) {
-		g.setColor(Color.yellow);
+		if(armor==4)
+			g.setColor(Color.gray);
+		else if(armor==3)
+			g.setColor(Color.darkGray);
+		else if(armor==2)
+			g.setColor(Color.yellow);
+		else if(armor==1)
+			g.setColor(Color.orange);
 		g.fillRect(x, y, width, height);
 		intersect(b);
 	}
 
 	void intersect(Ball_jeongmin b) {
-		//°øÀÌ º®µ¹ÀÇ ¿ŞÂÊ¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ì™¼ìª½ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vx>=0) {
 			if((b.x>=x-2*b.radius&&b.x<=x-2*b.radius+1)&&(b.y<=y+height-b.radius+1&&b.y>=y-b.radius-1))
 				{
 					b.vx = -(b.vx);
-					x = after_striking_x;
-					y = after_striking_y;
+					armor--;
+					if(armor==0) {
+						x = after_striking_x;
+						y = after_striking_y;
+					}
 				}
 		}
-		//°øÀÌ º®µ¹ÀÇ ¿À¸¥ÂÊ¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ì˜¤ë¡ ìª½ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vx<=0) {
 			if((b.x>=x+width-1&&b.x<=x+width)&&(b.y<=y+height-b.radius+1&&b.y>=y-b.radius-1))
 				{
 					b.vx = -(b.vx);
-					x = after_striking_x;
-					y = after_striking_y;
+					armor--;
+					if(armor==0) {
+						x = after_striking_x;
+						y = after_striking_y;
+					}
 				}
 		}
 		
-		//°øÀÌ º®µ¹ÀÇ À­¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ìœ—ë©´ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vy>=0) {
 			if((b.x>=x-b.radius-1&&b.x<=x+width-b.radius+1)&&(b.y>=y-2*b.radius-1&&b.y<=y-2*b.radius))
 				{
 					b.vy = -(b.vy);
-					x = after_striking_x;
-					y = after_striking_y;
+					armor--;
+					if(armor==0) {
+						x = after_striking_x;
+						y = after_striking_y;
+					}
 				}
 		}
-		//°øÀÌ º®µ¹ÀÇ ¾Æ·¡¸é¿¡ ºÎµúÇûÀ» °æ¿ì
+		//ë²½ëŒ ì•„ë˜ë©´ì— ë¶€ë”ªí˜”ì„ ê²½ìš°
 		if(b.vy<=0) {
 			if((b.x>=x-b.radius-1&&b.x<=x+width-b.radius+1)&&(b.y>=y+height&&b.y<=y+height+1))
 				{
 					b.vy = -(b.vy);
-					x = after_striking_x;
-					y = after_striking_y;
+					armor--;
+					if(armor==0) {
+						x = after_striking_x;
+						y = after_striking_y;
+					}
 				}
 		}
 	}
