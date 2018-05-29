@@ -7,18 +7,20 @@ public class Ball_jeongmin {
 	int x, y; // 공 좌표
 	int radius;
 	double vx, vy; // 공 속도
+	double stop_v;
 
-	Ball_jeongmin(Field_jeongmin field) { //공 생성자
-		//x = field.getRight() / 2;
-		//y = field.getBottom() / 2;
+	Ball_jeongmin(Field_jeongmin field) { // 공 생성자
+		// x = field.getRight() / 2;
+		// y = field.getBottom() / 2;
 		x = 130;
 		y = 200;
-		vx = -2;
-		vy = -5;
+		vx = 1;
+		vy = 1;
+		stop_v = 0;
 		this.field = field;
 	}
 
-	void draw(Graphics g) { //공 그리기
+	void draw(Graphics g) { // 공 그리기
 		int radius = 5;
 		g.setColor(Color.white);
 		g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
@@ -30,7 +32,7 @@ public class Ball_jeongmin {
 		checkBounds();
 	}
 
-	void checkBounds() { //벽에 부딪혔는지 체크
+	void checkBounds() { // 벽에 부딪혔는지 체크
 		if (y < field.getTop()) {
 			vy = -vy;
 			y = 2 * field.getTop() - y;
