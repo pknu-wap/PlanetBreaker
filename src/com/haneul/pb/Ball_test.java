@@ -16,7 +16,7 @@ public class Ball_test {
 	Ball_test(Field_test field,Play_test play) { //공 생성자
 		//x = field.getRight() / 2;
 		//y = field.getBottom() / 2;
-		x = 200;
+		x = 300;
 		y = 400;
 		vx = 1;
 		vy = 1;

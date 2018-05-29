@@ -9,7 +9,7 @@ import java.awt.geom.Arc2D;
 import javax.swing.JPanel;
 
 class Bar_jeongmin {
-	private int frameX1 = 20;
+/*	private int frameX1 = 20;
 	private int frameY1 = 15;
 	private int frameD = 550;
 	private int frameX2 = frameX1 + frameD;
@@ -20,14 +20,31 @@ class Bar_jeongmin {
 	int h = 20; // 바의 높이
 	int x1 = frameX1 + frameD / 2 - w / 2; // 바의 x좌표
 	int y1 = frameY2 - space - h; // 바의 y좌표
-	int x2 = x1 + w;
-	int y2 = y1 + h;
-	int dx = 5; // 바의 속도
+	int dx = 10; // 바의 속도
 	int num = 0; // 면의 번호
-	int cx, cy; // 충돌 좌표
-	int bx, by; // 공의 좌표
-
-	public Bar_jeongmin() {
+	private int d;*/
+	
+	
+	private int frameX1 = 50;
+	private int frameY1 = 50;
+	private int frameD = 480;
+	private int frameX2 = frameX1 + frameD;
+	private int frameY2 = frameY1 + frameD;
+	private int space = 10;
+	
+	private int w = 100;			//바의 크기
+	private int h = 20;				//바의 높이
+	private int x1=frameX1+frameD/2-w/2;				//바의 x좌표
+	private int y1=frameY2-space-h;				//바의 y좌표
+	private int dx=10;				//바의 속도
+	private int num=0;				//면의 번호
+	private int d;
+	
+	
+	Field_jeongmin field;
+	
+	public Bar_jeongmin(Field_jeongmin field) {
+		this.field = field;
 	}
 
 	public void draw(Graphics g) {
@@ -133,8 +150,30 @@ class Bar_jeongmin {
 		w = h;
 		h = tmp;
 	}
-
-	public void crashPoint() {
-
+	
+	int getX1() {
+		return x1;
+	}
+	int getY1() {
+		return y1;
+	}
+	int getWidth() {
+		return w;
+	}
+	int getHeight() {
+		return h;
+	}
+	int getNum() {
+		return num;
+	}
+	int getD(int num) {
+		if(num == 0||num==2)
+			d = w/4;
+		else if(num == 1||num == 3)
+			d = h/4;
+		return d;
+	}
+	void setDx(int dx) {
+		this.dx = dx;
 	}
 }
