@@ -14,6 +14,8 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 	private int w, h;
 	private BufferedImage image;
 	Play_jeongmin play;
+	Bar_jeongmin bar;
+	Ball_jeongmin ball;
 
 	Field_jeongmin(int wide, int high, Play_jeongmin play) { // Field 생성자
 		addKeyListener(this);
@@ -56,21 +58,31 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 		switch (keycode) {
 		case KeyEvent.VK_RIGHT:
 			play.bar.move(0);
-			play.bar.jump(0);
+			play.bar.move(2);
 			// repaint();
 			break;
 		case KeyEvent.VK_LEFT:
-			play.bar.move(1);
-			play.bar.jump(1);
-			// repaint();
-			break;
-		case KeyEvent.VK_SPACE:
-			play.bar.setDx(30);
+			play.bar.move(0+4);
+			play.bar.move(2+4);
 			// repaint();
 			break;
 		case KeyEvent.VK_UP:
-			play.ball.vx = 2;
-			play.ball.vy = 2;
+			play.bar.move(1);
+			play.bar.move(3);
+			break;
+		case KeyEvent.VK_DOWN:
+			play.bar.move(1+4);
+			play.bar.move(3+4);
+			break;
+		case KeyEvent.VK_SPACE:
+			play.bar.setDx(50);
+			break;
+		case KeyEvent.VK_ENTER:
+			play.ball.vx = -1;
+			play.ball.vy = -2;
+			break;
+		case KeyEvent.VK_CONTROL:
+			play.bar.teleport();
 			break;
 		}
 	}
@@ -78,7 +90,7 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		int keycode = e.getKeyCode();
 		if (keycode == KeyEvent.VK_SPACE)
-			play.bar.setDx(5);
+			play.bar.setDx(20);
 	}
 
 	public void keyTyped(KeyEvent arg0) {

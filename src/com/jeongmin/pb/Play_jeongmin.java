@@ -1,30 +1,112 @@
 package com.jeongmin.pb;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Play_jeongmin {
+public class Play_jeongmin extends JFrame{
 	Ball_jeongmin ball;
 	Brick_jeongmin[] brick;
 	Field_jeongmin field;
 	Bar_jeongmin bar;
 	int breaked_brick_number;
-	private BufferedImage image;
-
+	private BufferedImage image,title;
+	JPanel startPanel = new SPanel();
+	JPanel gamePanel = new JPanel(null);
+	JButton sb,eb;
+	
+	class SPanel extends JPanel {
+		public void paintComponent(Graphics g) {
+			g.drawImage(title,0,0,785,805,null);
+		}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new Play_jeongmin();
 	}
 
 	Play_jeongmin() {
+		try {
+			title = ImageIO.read(new File("title.jpg"));
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+			System.exit(0); 
+		}
 		field = new Field_jeongmin(800, 800, this);
 		ball = new Ball_jeongmin(field,this);
 		bar = new Bar_jeongmin(field);
+		makeBricks();
+		
+		
+		startPanel.setVisible(true);
+		startPanel.setLayout(null);
+		sb = new JButton("Game Start");
+		sb.setBounds(330, 530, 120, 30);
+		sb.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				startPanel.setVisible(false);
+				remove(startPanel);
+				gamePanel.setVisible(true);
+			}
+		});
+		startPanel.add(sb);
+		eb = new JButton("Exit");
+		eb.setBounds(330, 600, 120, 30);
+		eb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		startPanel.add(eb);
+		
+		gamePanel.add(field);
+		field.setLocation(0, 0);
+		
+		
+		add(gamePanel);
+		add(startPanel);
+		setSize(785, 805);
+		setVisible(true);
+		setResizable(false);
+		start();
+		setTitle("Planet Breaker");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	void start() {
+		breaking();
+	}
+
+	void breaking() {
+		while (true) {
+			if(breaked_brick_number==0)
+				nextLevel();
+			ball.move();
+			field.repaint();
+			try {
+				Thread.sleep(10);
+			} catch (Exception e) {
+			}
+		}
+	}
+	
+	void nextLevel() {
+		for(int i = 0;i<76;i++) {
+			brick[i].basic_armor++;
+			brick[i].armor = brick[i].basic_armor;
+			brick[i].x = brick[i].basic_x;
+			brick[i].y = brick[i].basic_y;
+		}
+		ball.x = ball.init_x;
+		ball.y = ball.init_y;
+		breaked_brick_number = 75;
+	}
+	void makeBricks() {
 		brick = new Brick_jeongmin[76];
 		breaked_brick_number = 75;
 		for (int i = 0; i < 4; i++)
@@ -87,54 +169,9 @@ public class Play_jeongmin {
 		}
 		for (int i = 72; i < 76; i++)
 			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 72) + 75, 140 + 25 * 9, 1);
-
-		try {
-			image = ImageIO.read(new File("space_background.png")); // 배경화면
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-			System.exit(0);
-		}
-
-		JPanel pan = new JPanel(null);
-		pan.add(field);
-		field.setLocation(0, 0);
-
-		JFrame f = new JFrame("Planet Breaker");
-		f.getContentPane().add(pan);
-		f.setSize(785, 805);
-		f.setVisible(true);
-		f.setResizable(false);
-		start();
-
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	void start() {
-		breaking();
-	}
 
-	void breaking() {
-		while (true) {
-			if(breaked_brick_number==0)
-				nextLevel();
-			ball.move();
-			field.repaint();
-			try {
-				Thread.sleep(10);
-			} catch (Exception e) {
-			}
-		}
-	}
 	
-	void nextLevel() {
-		for(int i = 0;i<76;i++) {
-			brick[i].basic_armor++;
-			brick[i].armor = brick[i].basic_armor;
-			brick[i].x = brick[i].basic_x;
-			brick[i].y = brick[i].basic_y;
-		}
-		ball.x = ball.init_x;
-		ball.y = ball.init_y;
-		breaked_brick_number = 75;
-	}
+
 }

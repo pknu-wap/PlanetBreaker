@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Play_jeongmin {
+public class Play_jeongmin extends JFrame{
 	Ball_jeongmin ball;
 	Brick_jeongmin[] brick;
 	Field_jeongmin field;
@@ -22,9 +22,9 @@ public class Play_jeongmin {
 	}
 
 	Play_jeongmin() {
-		field = new Field_jeongmin(600, 600, this);
+		field = new Field_jeongmin(800, 800, this);
 		ball = new Ball_jeongmin(field,this);
-		bar = new Bar_jeongmin();
+		bar = new Bar_jeongmin(field);
 		brick = new Brick_jeongmin[76];
 		breaked_brick_number = 75;
 		for (int i = 0; i < 4; i++)
@@ -99,14 +99,14 @@ public class Play_jeongmin {
 		pan.add(field);
 		field.setLocation(0, 0);
 
-		JFrame f = new JFrame("Planet Breaker");
-		f.getContentPane().add(pan);
-		f.setSize(585, 600);
-		f.setVisible(true);
-		f.setResizable(false);
+		setTitle("Planet Breaker");
+		getContentPane().add(pan);
+		setSize(785, 805);
+		setVisible(true);
+		setResizable(false);
 		start();
 
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	void start() {
@@ -115,6 +115,8 @@ public class Play_jeongmin {
 
 	void breaking() {
 		while (true) {
+			if(breaked_brick_number==0)
+				nextLevel();
 			ball.move();
 			field.repaint();
 			try {
@@ -131,5 +133,8 @@ public class Play_jeongmin {
 			brick[i].x = brick[i].basic_x;
 			brick[i].y = brick[i].basic_y;
 		}
+		ball.x = ball.init_x;
+		ball.y = ball.init_y;
+		breaked_brick_number = 75;
 	}
 }

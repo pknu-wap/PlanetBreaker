@@ -6,9 +6,12 @@ public class Ball_jeongmin {
 	Field_jeongmin field;
 	Play_jeongmin play;
 	int x, y; // 공 좌표
+	int init_x = 265;
+	int init_y = 500;
 	int radius;
 	double vx, vy; // 공 속도
 	double stop_v;
+	
 	int num;
 	int cx ;
 	int cy ;
@@ -17,10 +20,10 @@ public class Ball_jeongmin {
 	Ball_jeongmin(Field_jeongmin field,Play_jeongmin play) { // 공 생성자
 		// x = field.getRight() / 2;
 		// y = field.getBottom() / 2;
-		x = 130;
-		y = 200;
-		vx = 1;
-		vy = 1;
+		x = 300;
+		y = 400;
+		vx = 0;
+		vy = 0;
 		stop_v = 0;
 		this.field = field;
 		this.play = play;
@@ -65,6 +68,7 @@ public class Ball_jeongmin {
 	int getY() {
 		return y;
 	}
+	
 	void bound() {
 		x1 = play.bar.getX1();
 		y1 = play.bar.getY1();

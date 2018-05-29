@@ -76,7 +76,6 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 			break;
 		case KeyEvent.VK_SPACE:
 			play.bar.setDx(50);
-			// repaint();
 			break;
 		case KeyEvent.VK_ENTER:
 			play.ball.vx = -1;
