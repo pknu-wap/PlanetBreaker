@@ -38,7 +38,7 @@ class Bar_jeongmin {
 	private int h = 43;				//바의 높이
 	private int x1=frameX1+frameD/2-w/2;				//바의 x좌표
 	private int y1=frameY2-space-h;				//바의 y좌표
-	private int dx=10;				//바의 속도
+	private int dx=20;				//바의 속도
 	private int num=0;				//면의 번호
 	private int d;
 	
@@ -168,6 +168,26 @@ class Bar_jeongmin {
 				changewh();
 				num = 0;
 			}
+			break;
+		}
+	}
+	public void teleport() {
+		switch (num) {
+		case 0:
+			num = 2;
+			y1 = frameY1 + space;
+			break;
+		case 1:
+			num = 3;
+			x1 = frameX1 + space;
+			break;
+		case 2:
+			num = 0;
+			y1 = frameY2 - space - h;
+			break;
+		case 3:
+			num = 1;
+			x1 = frameX2 - space - w;
 			break;
 		}
 	}

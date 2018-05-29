@@ -67,12 +67,15 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 			// repaint();
 			break;
 		case KeyEvent.VK_SPACE:
-			play.bar.setDx(30);
+			play.bar.setDx(50);
 			// repaint();
 			break;
 		case KeyEvent.VK_UP:
 			play.ball.vx = -1;
 			play.ball.vy = -2;
+			break;
+		case KeyEvent.VK_ALT:
+			play.bar.teleport();
 			break;
 		}
 	}
@@ -80,7 +83,7 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		int keycode = e.getKeyCode();
 		if (keycode == KeyEvent.VK_SPACE)
-			play.bar.setDx(5);
+			play.bar.setDx(20);
 	}
 
 	public void keyTyped(KeyEvent arg0) {
