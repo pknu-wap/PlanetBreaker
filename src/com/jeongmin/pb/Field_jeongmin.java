@@ -58,19 +58,27 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 		switch (keycode) {
 		case KeyEvent.VK_RIGHT:
 			play.bar.move(0);
-			play.bar.jump(0);
+			play.bar.move(2);
 			// repaint();
 			break;
 		case KeyEvent.VK_LEFT:
-			play.bar.move(1);
-			play.bar.jump(1);
+			play.bar.move(0+4);
+			play.bar.move(2+4);
 			// repaint();
+			break;
+		case KeyEvent.VK_UP:
+			play.bar.move(1);
+			play.bar.move(3);
+			break;
+		case KeyEvent.VK_DOWN:
+			play.bar.move(1+4);
+			play.bar.move(3+4);
 			break;
 		case KeyEvent.VK_SPACE:
 			play.bar.setDx(50);
 			// repaint();
 			break;
-		case KeyEvent.VK_UP:
+		case KeyEvent.VK_ENTER:
 			play.ball.vx = -1;
 			play.ball.vy = -2;
 			break;

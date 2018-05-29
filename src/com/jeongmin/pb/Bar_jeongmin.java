@@ -84,89 +84,74 @@ class Bar_jeongmin {
 	public void move(int a) {
 		System.out.println(x1 + "  " + y1 + " " + num);
 
-		switch (a) {
-		case 0:
-			if (x1 > frameX1 && x1 < frameX2 - w && num == 0)
+		switch(a) {
+		case 0:case 2:
+			if(num==0||num==2)	{
 				x1 += dx;
-			if (y1 > frameY1 && y1 < frameY2 - h && num == 1)
+				if (x1 >= frameX2 - w && num == 0) {
+					x1 = frameX2 - h - space;
+					y1 = frameY2 - w - space;
+					changewh();
+					num = 1;
+				}//0 -> 1
+				if (x1 >= frameX2 - w && num == 2) {
+					x1 = frameX2 - h - space;
+					y1 = frameY1 + space;
+					changewh();
+					num = 1;
+				}// 2 -> 1
+			}
+			break;
+		case 1:case 3:
+			if(num==1||num==3)	{
 				y1 -= dx;
-			if (x1 > frameX1 && x1 < frameX2 - w && num == 2)
+				if (y1 <= frameY1 && num == 1) {
+					x1 = frameX2 - h - space;
+					y1 = frameY1 + space;
+					changewh();
+					num = 2;
+				}// 1 -> 2
+				if (y1 <= frameY1 && num == 3) {
+					x1 = frameX1 + space;
+					y1 = frameY1 + space;
+					changewh();
+					num = 2;
+				}// 3 -> 2
+				
+			}
+			break;
+		case 0+4:case 2+4:
+			if(num==0||num==2)	{
 				x1 -= dx;
-			if (y1 > frameY1 && y1 < frameY2 - h && num == 3)
+				if (x1 <= frameX1 && num == 2) {
+					x1 = frameX1 + space;
+					y1 = frameY1 + space;
+					changewh();
+					num = 3;
+				} // 2 -> 3
+				if (x1 <= frameX1 && num == 0) {
+					x1 = frameX1 + space;
+					y1 = frameY2 - w - space;
+					changewh();
+					num = 3;
+				}// 0 -> 3
+			}
+			break;
+		case 1+4:case 3+4:
+			if(num==1||num==3)	{
 				y1 += dx;
-			break;
-		case 1:
-			if (x1 > frameX1 && x1 < frameX2 - w && num == 0)
-				x1 -= dx;
-			if (y1 > frameY1 && y1 < frameY2 - h && num == 1)
-				y1 += dx;
-			if (x1 > frameX1 && x1 < frameX2 - w && num == 2)
-				x1 += dx;
-			if (y1 > frameY1 && y1 < frameY2 - h && num == 3)
-				y1 -= dx;
-			break;
-		}
-	}
-
-	public void jump(int a) {
-		switch (a) {
-		case 0:
-			// 0 -> 1
-			if (x1 >= frameX2 - w && num == 0) {
-				x1 = frameX2 - h - space;
-				y1 = frameY2 - w - space;
-				changewh();
-				num = 1;
-			}
-			// 1 -> 2
-			if (y1 <= frameY1 && num == 1) {
-				x1 = frameX2 - h - space;
-				y1 = frameY1 + space;
-				changewh();
-				num = 2;
-			}
-			// 2 -> 3
-			if (x1 <= frameX1 && num == 2) {
-				x1 = frameX1 + space;
-				y1 = frameY1 + space;
-				changewh();
-				num = 3;
-			} // 3 -> 0
-			if (y1 >= frameY2 - h && num == 3) {
-				x1 = frameX1 + space;
-				y1 = frameY2 - w - space;
-				changewh();
-				num = 0;
-			}
-			break;
-		case 1:
-			// 0 -> 3
-			if (x1 <= frameX1 && num == 0) {
-				x1 = frameX1 + space;
-				y1 = frameY2 - w - space;
-				changewh();
-				num = 3;
-			}
-			// 3 -> 2
-			if (y1 <= frameY1 && num == 3) {
-				x1 = frameX1 + space;
-				y1 = frameY1 + space;
-				changewh();
-				num = 2;
-			}
-			// 2 -> 1
-			if (x1 >= frameX2 - w && num == 2) {
-				x1 = frameX2 - h - space;
-				y1 = frameY1 + space;
-				changewh();
-				num = 1;
-			}
-			// 1 -> 0
-			if (y1 >= frameY2 - h && num == 1) {
-				x1 = frameX2 - h - space;
-				y1 = frameY2 - w - space;
-				changewh();
-				num = 0;
+				if (y1 >= frameY2 - h && num == 3) {
+					x1 = frameX1 + space;
+					y1 = frameY2 - w - space;
+					changewh();
+					num = 0;
+				}//3 -> 0
+				if (y1 >= frameY2 - h && num == 1) {
+					x1 = frameX2 - h - space;
+					y1 = frameY2 - w - space;
+					changewh();
+					num = 0;
+				}// 1 -> 0
 			}
 			break;
 		}
