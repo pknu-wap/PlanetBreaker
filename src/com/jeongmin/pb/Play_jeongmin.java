@@ -25,28 +25,68 @@ public class Play_jeongmin {
 		field = new Field_jeongmin(600, 580, this);
 		ball = new Ball_jeongmin(field);
 		bar = new Bar_jeongmin();
-		brick = new Brick_jeongmin[20];
+		brick = new Brick_jeongmin[76];
 		breaked_brick_number = 0;
-		brick[0] = new Brick_jeongmin(field, ball, 40, 40,4);
-		brick[1] = new Brick_jeongmin(field, ball, 70, 40,4);
-		brick[2] = new Brick_jeongmin(field, ball, 100, 40,4);
-		brick[3] = new Brick_jeongmin(field, ball, 130, 40,4);
-		brick[4] = new Brick_jeongmin(field, ball, 160, 40,4);
-		brick[5] = new Brick_jeongmin(field, ball, 40, 70,3);
-		brick[6] = new Brick_jeongmin(field, ball, 70, 70,3);
-		brick[7] = new Brick_jeongmin(field, ball, 100, 70,3);
-		brick[8] = new Brick_jeongmin(field, ball, 130, 70,3);
-		brick[9] = new Brick_jeongmin(field, ball, 160, 70,3);
-		brick[10] = new Brick_jeongmin(field, ball, 40, 100,2);
-		brick[11] = new Brick_jeongmin(field, ball, 70, 100,2);
-		brick[12] = new Brick_jeongmin(field, ball, 100, 100,2);
-		brick[13] = new Brick_jeongmin(field, ball, 130, 100,2);
-		brick[14] = new Brick_jeongmin(field, ball, 160, 100,2);
-		brick[15] = new Brick_jeongmin(field, ball, 40, 130,1);
-		brick[16] = new Brick_jeongmin(field, ball, 70, 130,1);
-		brick[17] = new Brick_jeongmin(field, ball, 100, 130,1);
-		brick[18] = new Brick_jeongmin(field, ball, 130, 130,1);
-		brick[19] = new Brick_jeongmin(field, ball, 160, 130,1);
+		for(int i = 0;i<4;i++) 
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*i+75, 140,1);
+		for(int i = 4;i<10;i++)	{
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-4)+50, 140+25,2);
+			if(i==4||i==9)
+				brick[i].armor = 1;
+		}
+		for(int i = 10;i<18;i++) {
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-10)+25, 140+25*2,2);
+			if(i==10||i==17)
+				brick[i].armor = 1;
+			else if(i==13||i==14)
+				brick[i].armor = 3;
+		}
+		for(int i = 18;i<28;i++) {
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-18), 140+25*3,2);
+			if(i==18||i==27)
+				brick[i].armor = 1;
+			else if(i>=21&&i<=24)
+				brick[i].armor = 3;
+		}
+		for(int i = 28;i<38;i++) {
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-28), 140+25*4,3);
+			if(i==28||i==37)
+				brick[i].armor = 1;
+			else if(i==29||i==36)
+				brick[i].armor = 2;
+			else if(i==32||i==33)
+				brick[i].armor = 4;
+		}
+		for(int i = 38;i<48;i++) {
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-38), 140+25*5,3);
+			if(i==38||i==47)
+				brick[i].armor = 1;
+			else if(i==39||i==46)
+				brick[i].armor = 2;
+			else if(i==42||i==43)
+				brick[i].armor = 4;
+		}
+		for(int i = 48;i<58;i++) {
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-48), 140+25*6,2);
+			if(i==48||i==57)
+				brick[i].armor = 1;
+			else if(i>=51&&i<=54)
+				brick[i].armor = 3;
+		}
+		for(int i = 58;i<66;i++) {
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-58)+25, 140+25*7,2);
+			if(i==58||i==65)
+				brick[i].armor = 1;
+			else if(i==61||i==62)
+				brick[i].armor = 3;
+		}
+		for(int i = 66;i<72;i++) {
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-66)+50, 140+25*8,2);
+			if(i==66||i==71)
+				brick[i].armor = 1;
+		}
+		for(int i = 72;i<76;i++)
+			brick[i] = new Brick_jeongmin(field, ball, 140+25*(i-72)+75, 140+25*9,1);
 		
 		try {
 			image = ImageIO.read(new File("space_background.png")); //배경화면

@@ -13,8 +13,8 @@ public class Ball_jeongmin {
 		//y = field.getBottom() / 2;
 		x = 130;
 		y = 200;
-		vx = 0;
-		vy = 0;
+		vx = -2;
+		vy = -5;
 		this.field = field;
 	}
 

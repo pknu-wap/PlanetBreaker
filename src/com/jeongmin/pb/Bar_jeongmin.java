@@ -10,9 +10,9 @@ import java.awt.geom.Arc2D;
 import javax.swing.JPanel;
 
 class Bar_jeongmin {
-	private int frameX1 = 50;
-	private int frameY1 = 50;
-	private int frameD = 480;
+	private int frameX1 = 20;
+	private int frameY1 = 15;
+	private int frameD = 550;
 	private int frameX2 = frameX1 + frameD;
 	private int frameY2 = frameY1 + frameD;
 	private int space = 10;

@@ -87,7 +87,7 @@ public class Field_jeongmin extends JPanel implements KeyListener{
 		
 		play.ball.draw(g);
 		play.bar.draw(g);
-		for(int i = 0;i<20;i++)
+		for(int i = 0;i<76;i++)
 			play.brick[i].draw(g);
 	}
 }
