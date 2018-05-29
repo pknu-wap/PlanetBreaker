@@ -1,4 +1,4 @@
-package com.jeongmin.pb;
+package test;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -22,9 +22,9 @@ public class Play_jeongmin {
 	}
 
 	Play_jeongmin() {
-		field = new Field_jeongmin(800, 800, this);
+		field = new Field_jeongmin(600, 600, this);
 		ball = new Ball_jeongmin(field,this);
-		bar = new Bar_jeongmin(field);
+		bar = new Bar_jeongmin();
 		brick = new Brick_jeongmin[76];
 		breaked_brick_number = 75;
 		for (int i = 0; i < 4; i++)
@@ -101,7 +101,7 @@ public class Play_jeongmin {
 
 		JFrame f = new JFrame("Planet Breaker");
 		f.getContentPane().add(pan);
-		f.setSize(785, 805);
+		f.setSize(585, 600);
 		f.setVisible(true);
 		f.setResizable(false);
 		start();
@@ -115,8 +115,6 @@ public class Play_jeongmin {
 
 	void breaking() {
 		while (true) {
-			if(breaked_brick_number==0)
-				nextLevel();
 			ball.move();
 			field.repaint();
 			try {
@@ -133,8 +131,5 @@ public class Play_jeongmin {
 			brick[i].x = brick[i].basic_x;
 			brick[i].y = brick[i].basic_y;
 		}
-		ball.x = ball.init_x;
-		ball.y = ball.init_y;
-		breaked_brick_number = 75;
 	}
 }
