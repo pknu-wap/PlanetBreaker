@@ -74,7 +74,7 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 			play.ball.vx = -1;
 			play.ball.vy = -2;
 			break;
-		case KeyEvent.VK_ALT:
+		case KeyEvent.VK_CONTROL:
 			play.bar.teleport();
 			break;
 		}
