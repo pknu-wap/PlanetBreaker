@@ -9,36 +9,27 @@ import java.awt.event.KeyListener;
 import java.awt.geom.Arc2D;
 import javax.swing.JPanel;
 
-class Bar_SKY extends JPanel implements KeyListener{
-	//공간의 크기
-	private int frameX1 = 80;
-	private int frameY1 = 80;
-	private int frameD = 400;
+class Bar_test {
+	private int frameX1 = 50;
+	private int frameY1 = 50;
+	private int frameD = 480;
 	private int frameX2 = frameX1 + frameD;
 	private int frameY2 = frameY1 + frameD;
 	private int space = 10;
 	
 	private int w = 100;			//바의 크기
 	private int h = 20;				//바의 높이
-	private int x1=frameX1+frameD/2;				//바의 x좌표
-	private int y1=frameY2-h-space;				//바의 y좌표
-	private int x2 = x1+w;			
-	private int y2 = y1+h;
-	private int dx=5;				//바의 속도
-	int num=0;						//면의 번호
-	private int cx,cy;				//충돌 좌표
-	private int bx,by;				//공의 좌표
+	private int x1=frameX1+frameD/2-w/2;				//바의 x좌표
+	private int y1=frameY2-space-h;				//바의 y좌표
+	private int dx=10;				//바의 속도
+	private int num=0;				//면의 번호
+	private int d;
+	Field_test Field;
 	
-	
-	public Bar_SKY() {
-		addKeyListener(this);
-		setFocusable(true);
-		requestFocus();
-		
-		
+	public Bar_test(Field_test Field) {
+		this.Field = Field;
 	}
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	public void draw(Graphics g) {
 		g.drawRect(frameX1,frameY1,frameD,frameD);
 		g.drawRect(x1, y1, w, h);
 	}
@@ -59,7 +50,6 @@ class Bar_SKY extends JPanel implements KeyListener{
 			if(y1>frameX1&&y1<frameX2-h&&num==3) y1-=dx;
 			break;
 		}
-	
 	}
 	public void jump(int a) {
 		switch(a) {
@@ -123,8 +113,6 @@ class Bar_SKY extends JPanel implements KeyListener{
 			}
 			break;
 		}
-		
-		
 	}
 	public void changewh() {
 		int tmp;
@@ -132,34 +120,29 @@ class Bar_SKY extends JPanel implements KeyListener{
 		w=h;
 		h=tmp;
 	}
-	public void crashPoint() {
-		
+	int getX1() {
+		return x1;
 	}
-
-	public void keyPressed(KeyEvent e) {
-		int keycode =  e.getKeyCode();
-		switch(keycode) {
-		case KeyEvent.VK_RIGHT:
-			move(0);
-			jump(0);
-			repaint();
-			break;
-		case KeyEvent.VK_LEFT:
-			move(1);
-			jump(1);
-			repaint();
-			break;
-		case KeyEvent.VK_SPACE:
-			dx = 30;
-			repaint();
-			break;
-			
-		}
+	int getY1() {
+		return y1;
 	}
-	public void keyReleased(KeyEvent e) {
-		int keycode =e.getKeyCode();
-		if(keycode == KeyEvent.VK_SPACE)
-			dx = 5;
+	int getWidth() {
+		return w;
 	}
-	public void keyTyped(KeyEvent arg0) {}
+	int getHeight() {
+		return h;
+	}
+	int getNum() {
+		return num;
+	}
+	int getD(int num) {
+		if(num == 0||num==2)
+			d = w/4;
+		else if(num == 1||num == 3)
+			d = h/4;
+		return d;
+	}
+	void setDx(int dx) {
+		this.dx = dx;
+	}
 }
