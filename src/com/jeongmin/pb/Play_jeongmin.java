@@ -69,7 +69,7 @@ public class Play_jeongmin extends JFrame{
 		
 		
 		add(gamePanel);
-		add(startPanel);
+		
 		setSize(785, 805);
 		setVisible(true);
 		setResizable(false);
@@ -107,31 +107,34 @@ public class Play_jeongmin extends JFrame{
 		breaked_brick_number = 75;
 	}
 	void makeBricks() {
+		int bx = 260;
+		int D = 25;
+		
 		brick = new Brick_jeongmin[76];
 		breaked_brick_number = 75;
 		for (int i = 0; i < 4; i++)
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * i + 75, 140, 1);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * i + 75, bx, 1);
 		for (int i = 4; i < 10; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 4) + 50, 140 + 25, 2);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 4) + 50, bx + D, 2);
 			if (i == 4 || i == 9)
 				brick[i].armor = 1;
 		}
 		for (int i = 10; i < 18; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 10) + 25, 140 + 25 * 2, 2);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 10) + 25, bx + D * 2, 2);
 			if (i == 10 || i == 17)
 				brick[i].armor = 1;
 			else if (i == 13 || i == 14)
 				brick[i].armor = 3;
 		}
 		for (int i = 18; i < 28; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 18), 140 + 25 * 3, 2);
+			brick[i] = new Brick_jeongmin(field, ball, bx +  D * (i - 18), bx + D * 3, 2);
 			if (i == 18 || i == 27)
 				brick[i].armor = 1;
 			else if (i >= 21 && i <= 24)
 				brick[i].armor = 3;
 		}
 		for (int i = 28; i < 38; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 28), 140 + 25 * 4, 3);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 28), bx + D * 4, 3);
 			if (i == 28 || i == 37)
 				brick[i].armor = 1;
 			else if (i == 29 || i == 36)
@@ -140,7 +143,7 @@ public class Play_jeongmin extends JFrame{
 				brick[i].armor = 4;
 		}
 		for (int i = 38; i < 48; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 38), 140 + 25 * 5, 3);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 38), bx + D * 5, 3);
 			if (i == 38 || i == 47)
 				brick[i].armor = 1;
 			else if (i == 39 || i == 46)
@@ -149,26 +152,26 @@ public class Play_jeongmin extends JFrame{
 				brick[i].armor = 4;
 		}
 		for (int i = 48; i < 58; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 48), 140 + 25 * 6, 2);
+			brick[i] = new Brick_jeongmin(field, ball,	bx + D * (i - 48), bx + D * 6, 2);
 			if (i == 48 || i == 57)
 				brick[i].armor = 1;
 			else if (i >= 51 && i <= 54)
 				brick[i].armor = 3;
 		}
 		for (int i = 58; i < 66; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 58) + 25, 140 + 25 * 7, 2);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 58) + 25, bx + D * 7, 2);
 			if (i == 58 || i == 65)
 				brick[i].armor = 1;
 			else if (i == 61 || i == 62)
 				brick[i].armor = 3;
 		}
 		for (int i = 66; i < 72; i++) {
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 66) + 50, 140 + 25 * 8, 2);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 66) + 50, bx + D * 8, 2);
 			if (i == 66 || i == 71)
 				brick[i].armor = 1;
 		}
 		for (int i = 72; i < 76; i++)
-			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 72) + 75, 140 + 25 * 9, 1);
+			brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 72) + 75, bx + D * 9, 1);
 	}
 
 
