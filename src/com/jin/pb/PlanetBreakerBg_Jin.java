@@ -68,11 +68,11 @@ public class PlanetBreakerBg_Jin extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try {
-			gimg = ImageIO.read(new File("space_background.png")); // ÀÌ¹ÌÁö ÀÐ±â
+			gimg = ImageIO.read(new File("space_background.png")); // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½
 			timg = ImageIO.read(new File("title.jpg"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
-			System.exit(0); // ¿À·ù¹ß»ý½Ã ¸Þ¼¼Áö Ãâ·Â ¹× Á¾·á
+			System.exit(0); // ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 
 		ButtonListener listener = new ButtonListener();
@@ -123,14 +123,16 @@ public class PlanetBreakerBg_Jin extends JFrame {
 
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == sb) { // 1¹ø¹öÆ°À» ´©¸£¸é ½ÇÇà
+			if (e.getSource() == sb) { // 1ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				startPanel.setVisible(false);
 				gamePanel.setVisible(true);
 				field.setVisible(true);
-			} // °ÔÀÓÀ» ´Ù½Ã ½ÇÇà
-			else if (e.getSource() == eb) { // 2¹ø¹öÆ°À» ´©¸£¸é ½ÇÇà
+				requestFocus();
+				setFocusable(true);
+			} // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			else if (e.getSource() == eb) { // 2ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				System.exit(0);
-			} // °ÔÀÓÀ» Á¾·á
+			} // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 	}
 	void start() {
@@ -140,7 +142,7 @@ public class PlanetBreakerBg_Jin extends JFrame {
 	void breaking() {
 		while (true) {
 			ball.move();
-			field.repaint(); // paint È£Ãâ
+			field.repaint(); // paint È£ï¿½ï¿½
 			try {
 				Thread.sleep(10);
 			} catch (Exception e) {

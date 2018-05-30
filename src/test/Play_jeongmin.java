@@ -1,12 +1,16 @@
 package test;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Play_jeongmin extends JFrame{
 	Ball_jeongmin ball;
@@ -14,7 +18,9 @@ public class Play_jeongmin extends JFrame{
 	Field_jeongmin field;
 	Bar_jeongmin bar;
 	int breaked_brick_number;
-	private BufferedImage image;
+	private BufferedImage timg,image;
+	private JPanel startPanel,pan;
+	private JButton sb, eb;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -89,14 +95,31 @@ public class Play_jeongmin extends JFrame{
 			brick[i] = new Brick_jeongmin(field, ball, 140 + 25 * (i - 72) + 75, 140 + 25 * 9, 1);
 
 		try {
+			timg = ImageIO.read(new File("title.jpg"));	//타이틀이미지
 			image = ImageIO.read(new File("space_background.png")); // 배경화면
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			System.exit(0);
 		}
+		ButtonListener listener = new ButtonListener();
+		startPanel = new SPanel();
+		startPanel.setSize(785, 805);
+		startPanel.setVisible(true);
+		startPanel.setLayout(null);
+		sb = new JButton("Game Start");
+		sb.setBounds(340, 500, 120, 30);
+		sb.addActionListener(listener);
+		startPanel.add(sb);
+		eb = new JButton("Exit");
+		eb.setBounds(340, 550, 120, 30);
+		eb.addActionListener(listener);
+		startPanel.add(eb);
+		add(startPanel);
 
-		JPanel pan = new JPanel(null);
+		pan = new JPanel(null);
+		
 		pan.add(field);
+		pan.setVisible(false);
 		field.setLocation(0, 0);
 
 		setTitle("Planet Breaker");
@@ -105,6 +128,8 @@ public class Play_jeongmin extends JFrame{
 		setVisible(true);
 		setResizable(false);
 		start();
+		requestFocus();
+		setFocusable(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -136,5 +161,25 @@ public class Play_jeongmin extends JFrame{
 		ball.x = ball.init_x;
 		ball.y = ball.init_y;
 		breaked_brick_number = 75;
+	}
+	class SPanel extends JPanel {
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.drawImage(timg, 0, 0, 800, 800, null);
+		}
+	}
+	private class ButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == sb) { // 1����ư�� ������ ����
+				startPanel.setVisible(false);
+				pan.setVisible(true);
+				field.setVisible(true);
+				field.requestFocus();
+				setFocusable(true);
+			} // ������ �ٽ� ����
+			else if (e.getSource() == eb) { // 2����ư�� ������ ����
+				System.exit(0);
+			} // ������ ����
+		}
 	}
 }
