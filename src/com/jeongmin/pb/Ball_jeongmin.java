@@ -18,8 +18,6 @@ public class Ball_jeongmin {
 	int x1,y1,w,h,d;
 
 	Ball_jeongmin(Field_jeongmin field,Play_jeongmin play) { // 공 생성자
-		// x = field.getRight() / 2;
-		// y = field.getBottom() / 2;
 		x = 300;
 		y = 400;
 		vx = 0;
