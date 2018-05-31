@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
-
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -20,6 +18,10 @@ public class Play extends JFrame {
    JPanel startPanel;
    JPanel gamePanel = new JPanel(null);
    JButton sb,eb;
+   JDialog end;
+   int frameX = 400;
+   int frameY = 0;
+   boolean B;
    
    class SPanel extends JPanel {
 		public void paintComponent(Graphics g) {
@@ -62,10 +64,11 @@ public class Play extends JFrame {
       gamePanel.setVisible(false);
       field.setLocation(0, 0);
       
-      
+      B = true;
       add(gamePanel);
       
       setSize(785, 805);
+      setLocation(frameX,frameY);
       setVisible(true);
       setResizable(false);
       start();
@@ -73,14 +76,21 @@ public class Play extends JFrame {
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
    
-   void start() {
-      breaking();
+  
+
+void start() {
+      stop();
    }
 
-   void breaking() {
-      while (true) {
+   void stop() {
+	   B=true;
+      while (B) {
          if(breaked_brick_number==0)
             nextLevel();
+         if(ball.cx<0||ball.cy<0||ball.cx>800||ball.cy>805) {
+        	 end = new endDialog();
+        	 B = false;
+         }
          ball.move();
          field.repaint();
          try {
@@ -109,6 +119,8 @@ public class Play extends JFrame {
 				field.setVisible(true);
 				field.requestFocus();
 				setFocusable(true);
+				ball.vx = 0;
+				ball.vy = Math.sqrt(8);
 				
 			} // ������ �ٽ� ����
 			else if (e.getSource() == eb) { // 2����ư�� ������ ����
@@ -183,4 +195,22 @@ public class Play extends JFrame {
       for (int i = 72; i < 76; i++)
          brick[i] = new Brick(field, ball, bx + D * (i - 72) + 75, bx + D * 9, 1);
    }
+   class endDialog extends JDialog implements ActionListener{
+	   	JButton retry = new JButton();
+  	 	JButton main = new JButton();
+  	 	
+		public endDialog() {
+			setTitle("Game End");
+			setSize(300,200);
+			setVisible(true);
+	   	 	setLocation(frameX+250,frameY+300);
+	   	 	setLayout(new BorderLayout());
+		}
+		public void actionPerformed(ActionEvent e) {
+			
+			
+			
+			
+		}
+	}
 }
