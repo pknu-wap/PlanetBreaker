@@ -127,10 +127,10 @@ public class Play_jeongmin extends JFrame{
 		setSize(785, 805);
 		setVisible(true);
 		setResizable(false);
-		start();
+		
 		requestFocus();
 		setFocusable(true);
-
+		start();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -176,6 +176,7 @@ public class Play_jeongmin extends JFrame{
 				field.setVisible(true);
 				field.requestFocus();
 				setFocusable(true);
+				
 			} // ������ �ٽ� ����
 			else if (e.getSource() == eb) { // 2����ư�� ������ ����
 				System.exit(0);

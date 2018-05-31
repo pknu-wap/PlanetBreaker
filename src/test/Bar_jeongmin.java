@@ -11,20 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 class Bar_jeongmin {
-/*	private int frameX1 = 20;
-	private int frameY1 = 15;
-	private int frameD = 550;
-	private int frameX2 = frameX1 + frameD;
-	private int frameY2 = frameY1 + frameD;
-	private int space = 10;
 
-	int w = 100; // 바의 크기
-	int h = 20; // 바의 높이
-	int x1 = frameX1 + frameD / 2 - w / 2; // 바의 x좌표
-	int y1 = frameY2 - space - h; // 바의 y좌표
-	int dx = 10; // 바의 속도
-	int num = 0; // 면의 번호
-	private int d;*/
 	private BufferedImage ship0,ship1,ship2,ship3;
 	
 	private int frameX1 = 10;
@@ -176,14 +163,7 @@ class Bar_jeongmin {
 			break;
 		}
 	}
-	public void changeImage() {
-		
-		tmp = ship2;
-		ship2 = ship3;
-	}
-	public void resetImage() {
-		ship2 = tmp;
-	}
+
 	public void changewh() {
 		int tmp;
 		tmp = w;

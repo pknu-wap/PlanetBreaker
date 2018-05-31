@@ -9,24 +9,25 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Play extends JFrame{
+
+public class Play extends JFrame {
    Ball ball;
    Brick[] brick;
    Field field;
    Bar bar;
    int breaked_brick_number;
    private BufferedImage image,title;
-   JPanel startPanel = new SPanel();
+   JPanel startPanel;
    JPanel gamePanel = new JPanel(null);
    JButton sb,eb;
    
    class SPanel extends JPanel {
-      public void paintComponent(Graphics g) {
-         g.drawImage(title,0,0,785,805,null);
-      }
-   }
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.drawImage(title, 0, 0, 800, 800, null);
+		}
+	}
    public static void main(String[] args) {
-      // TODO Auto-generated method stub
       new Play();
    }
 
@@ -42,29 +43,23 @@ public class Play extends JFrame{
       bar = new Bar(field);
       makeBricks();
       
-      
+      ButtonListener listener = new ButtonListener();
+      startPanel = new SPanel();
+      startPanel.setSize(785, 805);
       startPanel.setVisible(true);
       startPanel.setLayout(null);
       sb = new JButton("Game Start");
       sb.setBounds(330, 530, 120, 30);
-      sb.addActionListener(new ActionListener(){
-         public void actionPerformed(ActionEvent e) {
-            startPanel.setVisible(false);
-            remove(startPanel);
-            gamePanel.setVisible(true);
-         }
-      });
+      sb.addActionListener(listener);
       startPanel.add(sb);
       eb = new JButton("Exit");
       eb.setBounds(330, 600, 120, 30);
-      eb.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-         }
-      });
+      eb.addActionListener(listener);
       startPanel.add(eb);
+      add(startPanel);
       
       gamePanel.add(field);
+      gamePanel.setVisible(false);
       field.setLocation(0, 0);
       
       
@@ -106,6 +101,21 @@ public class Play extends JFrame{
       ball.y = ball.init_y;
       breaked_brick_number = 75;
    }
+   private class ButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == sb) { // 1����ư�� ������ ����
+				startPanel.setVisible(false);
+				gamePanel.setVisible(true);
+				field.setVisible(true);
+				field.requestFocus();
+				setFocusable(true);
+				
+			} // ������ �ٽ� ����
+			else if (e.getSource() == eb) { // 2����ư�� ������ ����
+				System.exit(0);
+			} // ������ ����
+		}
+	}
    void makeBricks() {
       int bx = 260;
       int D = 25;

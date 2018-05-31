@@ -30,8 +30,8 @@ public class PlanetBreakerBg_Jin extends JFrame {
 		PlanetBreakerBg_Jin pb = new PlanetBreakerBg_Jin();
 	}
 	private JPanel startPanel,gamePanel;
-	private JButton sb, eb;
-	private BufferedImage gimg, timg;
+	private JButton sb,hb,eb;
+	private BufferedImage gimg, timg, himg;
 	private Image bg;
 
 	public PlanetBreakerBg_Jin() {
@@ -70,6 +70,7 @@ public class PlanetBreakerBg_Jin extends JFrame {
 		try {
 			gimg = ImageIO.read(new File("space_background.png")); // �̹��� �б�
 			timg = ImageIO.read(new File("title.jpg"));
+			himg = ImageIO.read(new File("조작키.png"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			System.exit(0); // �����߻��� �޼��� ��� �� ����
@@ -84,10 +85,14 @@ public class PlanetBreakerBg_Jin extends JFrame {
 		sb.setBounds(240, 400, 120, 30);
 		sb.addActionListener(listener);
 		startPanel.add(sb);
+		hb = new JButton("Help");
+		hb.setBounds(240, 450, 120, 30);
+		hb.addActionListener(listener);
 		eb = new JButton("Exit");
-		eb.setBounds(240, 450, 120, 30);
+		eb.setBounds(240, 500, 120, 30);
 		eb.addActionListener(listener);
 		startPanel.add(eb);
+	
 		add(startPanel);
 		gamePanel = new GPanel();
 		gamePanel.add(field);
@@ -130,6 +135,9 @@ public class PlanetBreakerBg_Jin extends JFrame {
 				requestFocus();
 				setFocusable(true);
 			} // ������ �ٽ� ����
+			else if (e.getSource() == hb) {
+				
+			}
 			else if (e.getSource() == eb) { // 2����ư�� ������ ����
 				System.exit(0);
 			} // ������ ����
