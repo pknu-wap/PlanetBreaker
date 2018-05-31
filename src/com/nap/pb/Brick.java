@@ -1,10 +1,10 @@
-package com.jeongmin.pb;
+package com.nap.pb;
 
 import java.awt.*;
 
-public class Brick_jeongmin {
-   Field_jeongmin f;
-   Ball_jeongmin b;
+public class Brick {
+   Field f;
+   Ball b;
    int x;
    int y;
    int width;
@@ -19,7 +19,7 @@ public class Brick_jeongmin {
    int armor; // armor만큼 부딪혀야 벽돌 사라짐
    int basic_armor;
 
-   Brick_jeongmin(Field_jeongmin f, Ball_jeongmin b, int x, int y, int armor) {
+   Brick(Field f, Ball b, int x, int y, int armor) {
       this.x = x;
       this.y = y;
 
@@ -52,7 +52,7 @@ public class Brick_jeongmin {
       intersect(b);
    }
 
-   void intersect(Ball_jeongmin b) {
+   void intersect(Ball b) {
       // 벽돌 왼쪽에 부딪혔을 경우
       if (b.vx >= 0) {
          if ((b.x >= x - 2 * b.radius && b.x <= x - 2 * b.radius + 1)

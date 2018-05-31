@@ -1,10 +1,10 @@
-package com.jeongmin.pb;
+package com.nap.pb;
 
 import java.awt.*;
 
-public class Ball_jeongmin {
-   Field_jeongmin field;
-   Play_jeongmin play;
+public class Ball {
+   Field field;
+   Play play;
    int x, y; // 공 좌표
    int init_x = 265;
    int init_y = 500;
@@ -19,7 +19,7 @@ public class Ball_jeongmin {
    int cy ;
    int x1,y1,w,h,d;
 
-   Ball_jeongmin(Field_jeongmin field,Play_jeongmin play) { // 공 생성자
+   Ball(Field field,Play play) { // 공 생성자
       // x = field.getRight() / 2;
       // y = field.getBottom() / 2;
       x = 382;

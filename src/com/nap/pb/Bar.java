@@ -1,4 +1,4 @@
-package com.jeongmin.pb;
+package com.nap.pb;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-class Bar_jeongmin {
+class Bar {
 
    private BufferedImage ship0,ship1,ship2,ship3;
    
@@ -30,9 +30,9 @@ class Bar_jeongmin {
    private int d;
    BufferedImage tmp;
    
-   Field_jeongmin field;
+   Field field;
    
-   public Bar_jeongmin(Field_jeongmin field) {
+   public Bar(Field field) {
       this.field = field;
       try {
          ship0 = ImageIO.read(new File("Ship0.png")); //비행기 이미지

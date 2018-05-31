@@ -1,4 +1,4 @@
-package com.jeongmin.pb;
+package com.nap.pb;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -10,14 +10,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Field_jeongmin extends JPanel implements KeyListener {
+public class Field extends JPanel implements KeyListener {
    private int w, h;
    private BufferedImage image;
-   Play_jeongmin play;
-   Bar_jeongmin bar;
-   Ball_jeongmin ball;
+   Play play;
+   Bar bar;
+   Ball ball;
 
-   Field_jeongmin(int wide, int high, Play_jeongmin play) { // Field 생성자
+   Field(int wide, int high, Play play) { // Field 생성자
       addKeyListener(this);
       setFocusable(true);
       requestFocus();
