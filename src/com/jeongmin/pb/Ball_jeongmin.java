@@ -11,17 +11,30 @@ public class Ball_jeongmin {
 	int radius;
 	double vx, vy; // 공 속도
 	double stop_v;
-	
+	double vx1,vy1;
+	double vx2,vy2;
+	double vd;
 	int num;
 	int cx ;
 	int cy ;
 	int x1,y1,w,h,d;
 
 	Ball_jeongmin(Field_jeongmin field,Play_jeongmin play) { // 공 생성자
+<<<<<<< HEAD
 		x = 300;
 		y = 400;
+=======
+		// x = field.getRight() / 2;
+		// y = field.getBottom() / 2;
+		x = 382;
+		y = 550;
+>>>>>>> d1260b85acc20b7be42e8cecbc14120c2216dc05
 		vx = 0;
-		vy = 0;
+		vy = Math.sqrt(8);
+		vx1 = 2;
+		vy1 = 2;
+		vx2 = Math.sqrt(3);
+		vy2 = Math.sqrt(9);
 		stop_v = 0;
 		this.field = field;
 		this.play = play;
@@ -75,25 +88,77 @@ public class Ball_jeongmin {
 		num = play.bar.getNum();
 		cx = x-radius;
 		cy = y-radius;
+		double d = 113/4;
 	
 		
 		switch(num) {
 		case 0:
-			if((x1<cx&&cx<x1+w)&&cy==y1)
-				vy = -vy;
+			if(cy==y1) {
+				if(x1<=cx&&cx<x1+d) {
+					vx=-Math.abs(vx1);
+					vy =-Math.abs(vy1);
+				}else if(x1+d<=cx&&cx<x1+d*2) {
+					vx=-Math.abs(vx2);
+					vy =-Math.abs(vy2);
+				}else if(x1+d*2<=cx&&cx<x1+d*3) {
+					vx=Math.abs(vx2);
+					vy =-Math.abs(vy2);
+				}else if(x1+d*3<=cx&&cx<x1+w) {
+					vx=Math.abs(vx1);
+					vy=-Math.abs(vy1);
+				}
+			}
 			break;
 		case 1:
-			if((y1<cy&&cy<y1+h)&&cx==x1)
-				vx = -vx;
+			if(cx==x1) {
+				if(y1<=cy&&cy<y1+d) {
+					vx=-Math.abs(vx1);
+					vy=-Math.abs(vy1);
+				}else if(y1+d<=cy&&cy<y1+d*2) {
+					vx=-Math.abs(vy2);
+					vy=-Math.abs(vx2);
+				}else if(y1+d*2<=cy&&cy<y1+d*3) {
+					vx=-Math.abs(vy2);
+					vy=Math.abs(vx2);
+				}else if(y1+d*3<=cy&&cy<y1+h) {
+					vx=-Math.abs(vx1);
+					vy=Math.abs(vy1);
+				}
+			}
 			break;
 		case 2:
-			if((x1<cx&&cx<x1+w)&&cy==(y1+h))
-				vy = -vy;
+			if(cy==y1+h) {
+				if(x1<=cx&&cx<x1+d) {
+					vx=-Math.abs(vx1);
+					vy =Math.abs(vy1);
+				}else if(x1+d<=cx&&cx<x1+d*2) {
+					vx=-Math.abs(vx2);
+					vy =Math.abs(vy2);
+				}else if(x1+d*2<=cx&&cx<x1+d*3) {
+					vx=Math.abs(vx2);
+					vy =Math.abs(vy2);
+				}else if(x1+d*3<=cx&&cx<x1+w) {
+					vx=Math.abs(vx1);
+					vy=Math.abs(vy1);
+				}
+			}
 			break;
 		case 3:
-			if((y1<cy&&cy<y1+h)&&cx==x1+w)
-				vx = -vx;
-			break;
+			if(cx==x1+w) {
+				if(y1<=cy&&cy<y1+d) {
+					vx=Math.abs(vx1);
+					vy=-Math.abs(vy1);
+				}else if(y1+d<=cy&&cy<y1+d*2) {
+					vx=Math.abs(vy2);
+					vy=-Math.abs(vx2);
+				}else if(y1+d*2<=cy&&cy<y1+d*3) {
+					vx=Math.abs(vy2);
+					vy=Math.abs(vx2);
+				}else if(y1+d*3<=cy&&cy<y1+h) {
+					vx=Math.abs(vx1);
+					vy=Math.abs(vy1);
+				}
+			}
 		}
 	}
 }
