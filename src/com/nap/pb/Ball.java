@@ -45,7 +45,7 @@ public class Ball {
       x = x + (int) vx;
       y = y + (int) vy;
       checkBounds();
-      bound();
+      bounce();
    }
 
    void checkBounds() { // 벽에 부딪혔는지 체크
@@ -75,7 +75,7 @@ public class Ball {
       return y;
    }
    
-   void bound() {
+   void bounce() {
       x1 = play.bar.getX1();
       y1 = play.bar.getY1();
       w = play.bar.getWidth();
@@ -83,12 +83,12 @@ public class Ball {
       num = play.bar.getNum();
       cx = x-radius;
       cy = y-radius;
-      double d = 113/4;
+      int d = 112/4;
    
       
       switch(num) {
       case 0:
-         if(cy==y1) {
+         if(cy>=y1) {
             if(x1<=cx&&cx<x1+d) {
                vx=-Math.abs(vx1);
                vy =-Math.abs(vy1);
@@ -105,7 +105,7 @@ public class Ball {
          }
          break;
       case 1:
-         if(cx==x1) {
+         if(cx>=x1) {
             if(y1<=cy&&cy<y1+d) {
                vx=-Math.abs(vx1);
                vy=-Math.abs(vy1);
@@ -122,7 +122,7 @@ public class Ball {
          }
          break;
       case 2:
-         if(cy==y1+h) {
+         if(cy<=y1+h) {
             if(x1<=cx&&cx<x1+d) {
                vx=-Math.abs(vx1);
                vy =Math.abs(vy1);
@@ -139,7 +139,7 @@ public class Ball {
          }
          break;
       case 3:
-         if(cx==x1+w) {
+         if(cx<=x1+w) {
             if(y1<=cy&&cy<y1+d) {
                vx=Math.abs(vx1);
                vy=-Math.abs(vy1);
