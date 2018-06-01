@@ -4,29 +4,32 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
-
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Play_jeongmin extends JFrame{
+
+public class Play_jeongmin extends JFrame {
    Ball_jeongmin ball;
    Brick_jeongmin[] brick;
    Field_jeongmin field;
    Bar_jeongmin bar;
    int breaked_brick_number;
    private BufferedImage image,title;
-   JPanel startPanel = new SPanel();
+   JPanel startPanel;
    JPanel gamePanel = new JPanel(null);
    JButton sb,eb;
+   JDialog end;
+   int frameX = 400;
+   int frameY = 0;
+   boolean B;
    
    class SPanel extends JPanel {
-      public void paintComponent(Graphics g) {
-         g.drawImage(title,0,0,785,805,null);
-      }
-   }
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.drawImage(title, 0, 0, 800, 800, null);
+		}
+	}
    public static void main(String[] args) {
-      // TODO Auto-generated method stub
       new Play_jeongmin();
    }
 
@@ -42,35 +45,30 @@ public class Play_jeongmin extends JFrame{
       bar = new Bar_jeongmin(field);
       makeBricks();
       
-      
+      ButtonListener listener = new ButtonListener();
+      startPanel = new SPanel();
+      startPanel.setSize(785, 805);
       startPanel.setVisible(true);
       startPanel.setLayout(null);
       sb = new JButton("Game Start");
       sb.setBounds(330, 530, 120, 30);
-      sb.addActionListener(new ActionListener(){
-         public void actionPerformed(ActionEvent e) {
-            startPanel.setVisible(false);
-            remove(startPanel);
-            gamePanel.setVisible(true);
-         }
-      });
+      sb.addActionListener(listener);
       startPanel.add(sb);
       eb = new JButton("Exit");
       eb.setBounds(330, 600, 120, 30);
-      eb.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-         }
-      });
+      eb.addActionListener(listener);
       startPanel.add(eb);
+      add(startPanel);
       
       gamePanel.add(field);
+      gamePanel.setVisible(false);
       field.setLocation(0, 0);
       
-      
+      B = true;
       add(gamePanel);
       
       setSize(785, 805);
+      setLocation(frameX,frameY);
       setVisible(true);
       setResizable(false);
       start();
@@ -78,14 +76,21 @@ public class Play_jeongmin extends JFrame{
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
    
-   void start() {
-      breaking();
+  
+
+void start() {
+      stop();
    }
 
-   void breaking() {
-      while (true) {
+   void stop() {
+	   B=true;
+      while (B) {
          if(breaked_brick_number==0)
             nextLevel();
+         if(ball.cx<0||ball.cy<0||ball.cx>800||ball.cy>805) {
+        	 end = new endDialog();
+        	 B = false;
+         }
          ball.move();
          field.repaint();
          try {
@@ -106,6 +111,23 @@ public class Play_jeongmin extends JFrame{
       ball.y = ball.init_y;
       breaked_brick_number = 75;
    }
+   private class ButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == sb) { // 1����ư�� ������ ����
+				startPanel.setVisible(false);
+				gamePanel.setVisible(true);
+				field.setVisible(true);
+				field.requestFocus();
+				setFocusable(true);
+				ball.vx = 0;
+				ball.vy = Math.sqrt(8);
+				
+			} // ������ �ٽ� ����
+			else if (e.getSource() == eb) { // 2����ư�� ������ ����
+				System.exit(0);
+			} // ������ ����
+		}
+	}
    void makeBricks() {
       int bx = 260;
       int D = 25;
@@ -173,8 +195,22 @@ public class Play_jeongmin extends JFrame{
       for (int i = 72; i < 76; i++)
          brick[i] = new Brick_jeongmin(field, ball, bx + D * (i - 72) + 75, bx + D * 9, 1);
    }
-
-
-   
-
+   class endDialog extends JDialog implements ActionListener{
+	   	JButton retry = new JButton();
+  	 	JButton main = new JButton();
+  	 	
+		public endDialog() {
+			setTitle("Game End");
+			setSize(300,200);
+			setVisible(true);
+	   	 	setLocation(frameX+250,frameY+300);
+	   	 	setLayout(new BorderLayout());
+		}
+		public void actionPerformed(ActionEvent e) {
+			
+			
+			
+			
+		}
+	}
 }

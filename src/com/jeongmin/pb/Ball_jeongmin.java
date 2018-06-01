@@ -25,7 +25,7 @@ public class Ball_jeongmin {
       x = 382;
       y = 550;
       vx = 0;
-      vy = Math.sqrt(8);
+      vy = 0;
       vx1 = 2;
       vy1 = 2;
       vx2 = Math.sqrt(3);
@@ -44,8 +44,7 @@ public class Ball_jeongmin {
    void move() {
       x = x + (int) vx;
       y = y + (int) vy;
-      checkBounds();
-      bound();
+      bounce();
    }
 
    void checkBounds() { // 벽에 부딪혔는지 체크
@@ -75,7 +74,7 @@ public class Ball_jeongmin {
       return y;
    }
    
-   void bound() {
+   void bounce() {
       x1 = play.bar.getX1();
       y1 = play.bar.getY1();
       w = play.bar.getWidth();
@@ -83,12 +82,12 @@ public class Ball_jeongmin {
       num = play.bar.getNum();
       cx = x-radius;
       cy = y-radius;
-      double d = 113/4;
+      int d = 112/4;
    
       
       switch(num) {
       case 0:
-         if(cy==y1) {
+         if(cy>=y1&&cy<=y1+5) {
             if(x1<=cx&&cx<x1+d) {
                vx=-Math.abs(vx1);
                vy =-Math.abs(vy1);
@@ -105,7 +104,7 @@ public class Ball_jeongmin {
          }
          break;
       case 1:
-         if(cx==x1) {
+         if(cx>=x1&&cx<=x1+5) {
             if(y1<=cy&&cy<y1+d) {
                vx=-Math.abs(vx1);
                vy=-Math.abs(vy1);
@@ -122,7 +121,7 @@ public class Ball_jeongmin {
          }
          break;
       case 2:
-         if(cy==y1+h) {
+         if(cy<=y1+h&&cy>=y1+h-5) {
             if(x1<=cx&&cx<x1+d) {
                vx=-Math.abs(vx1);
                vy =Math.abs(vy1);
@@ -139,7 +138,7 @@ public class Ball_jeongmin {
          }
          break;
       case 3:
-         if(cx==x1+w) {
+         if(cx<=x1+w&&cx>=x1+w-5) {
             if(y1<=cy&&cy<y1+d) {
                vx=Math.abs(vx1);
                vy=-Math.abs(vy1);
