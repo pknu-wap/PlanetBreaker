@@ -79,6 +79,7 @@ public class Play_jeongmin extends JFrame {
   
 
 void start() {
+	ball.Sound("bgm.wav", true);
       stop();
    }
 
@@ -87,10 +88,10 @@ void start() {
       while (B) {
          if(breaked_brick_number==0)
             nextLevel();
-         if(ball.cx<0||ball.cy<0||ball.cx>800||ball.cy>805) {
-        	 end = new endDialog();
-        	 B = false;
-         }
+        // if(ball.cx<0||ball.cy<0||ball.cx>800||ball.cy>805) {
+        //	 end = new endDialog();
+        //	 B = false;
+         //}
          ball.move();
          field.repaint();
          try {

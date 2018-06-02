@@ -1,6 +1,12 @@
 package com.jeongmin.pb;
 
 import java.awt.*;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class Ball_jeongmin {
    Field_jeongmin field;
@@ -18,7 +24,22 @@ public class Ball_jeongmin {
    int cx ;
    int cy ;
    int x1,y1,w,h,d;
+   
+   String effectSound = "effect.wav";
 
+   public void Sound(String file, boolean Loop) {
+	   Clip clip;
+	   try {
+		   AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream(file)));
+		   clip = AudioSystem.getClip();
+		   clip.open(ais);
+		   clip.start();
+		   if(Loop)clip.loop(-1);//Loop 값이 ture면 사운드재생을 무한반복, false면 한번만 재생
+	   }catch(Exception e) {
+		   e.printStackTrace();
+	   }
+   }
+   
    Ball_jeongmin(Field_jeongmin field,Play_jeongmin play) { // 공 생성자
       // x = field.getRight() / 2;
       // y = field.getBottom() / 2;
@@ -44,6 +65,7 @@ public class Ball_jeongmin {
    void move() {
       x = x + (int) vx;
       y = y + (int) vy;
+      checkBounds();
       bounce();
    }
 
@@ -91,15 +113,19 @@ public class Ball_jeongmin {
             if(x1<=cx&&cx<x1+d) {
                vx=-Math.abs(vx1);
                vy =-Math.abs(vy1);
+               Sound(effectSound,false);
             }else if(x1+d<=cx&&cx<x1+d*2) {
                vx=-Math.abs(vx2);
                vy =-Math.abs(vy2);
+               Sound(effectSound,false);
             }else if(x1+d*2<=cx&&cx<x1+d*3) {
                vx=Math.abs(vx2);
                vy =-Math.abs(vy2);
+               Sound(effectSound,false);
             }else if(x1+d*3<=cx&&cx<x1+w) {
                vx=Math.abs(vx1);
                vy=-Math.abs(vy1);
+               Sound(effectSound,false);
             }
          }
          break;
@@ -108,15 +134,19 @@ public class Ball_jeongmin {
             if(y1<=cy&&cy<y1+d) {
                vx=-Math.abs(vx1);
                vy=-Math.abs(vy1);
+               Sound(effectSound,false);
             }else if(y1+d<=cy&&cy<y1+d*2) {
                vx=-Math.abs(vy2);
                vy=-Math.abs(vx2);
+               Sound(effectSound,false);
             }else if(y1+d*2<=cy&&cy<y1+d*3) {
                vx=-Math.abs(vy2);
                vy=Math.abs(vx2);
+               Sound(effectSound,false);
             }else if(y1+d*3<=cy&&cy<y1+h) {
                vx=-Math.abs(vx1);
                vy=Math.abs(vy1);
+               Sound(effectSound,false);
             }
          }
          break;
@@ -125,15 +155,19 @@ public class Ball_jeongmin {
             if(x1<=cx&&cx<x1+d) {
                vx=-Math.abs(vx1);
                vy =Math.abs(vy1);
+               Sound(effectSound,false);
             }else if(x1+d<=cx&&cx<x1+d*2) {
                vx=-Math.abs(vx2);
                vy =Math.abs(vy2);
+               Sound(effectSound,false);
             }else if(x1+d*2<=cx&&cx<x1+d*3) {
                vx=Math.abs(vx2);
                vy =Math.abs(vy2);
+               Sound(effectSound,false);
             }else if(x1+d*3<=cx&&cx<x1+w) {
                vx=Math.abs(vx1);
                vy=Math.abs(vy1);
+               Sound(effectSound,false);
             }
          }
          break;
@@ -142,15 +176,19 @@ public class Ball_jeongmin {
             if(y1<=cy&&cy<y1+d) {
                vx=Math.abs(vx1);
                vy=-Math.abs(vy1);
+               Sound(effectSound,false);
             }else if(y1+d<=cy&&cy<y1+d*2) {
                vx=Math.abs(vy2);
                vy=-Math.abs(vx2);
+               Sound(effectSound,false);
             }else if(y1+d*2<=cy&&cy<y1+d*3) {
                vx=Math.abs(vy2);
                vy=Math.abs(vx2);
+               Sound(effectSound,false);
             }else if(y1+d*3<=cy&&cy<y1+h) {
                vx=Math.abs(vx1);
                vy=Math.abs(vy1);
+               Sound(effectSound,false);
             }
          }
       }
