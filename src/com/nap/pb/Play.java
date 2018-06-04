@@ -104,6 +104,7 @@ public class Play extends JFrame {
 		setTitle("Planet Breaker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 
 	void start() {
 		stop();
@@ -237,20 +238,33 @@ public class Play extends JFrame {
 			brick[i] = new Brick(field, ball, bx + D * (i - 72) + 75, bx + D * 9, 1);
 	}
 
-	class endDialog extends JDialog implements ActionListener {
-		JButton retry = new JButton();
-		JButton main = new JButton();
-
+	class endDialog extends JDialog {
+		JButton end = new JButton("Exit");
+		JPanel p = new JPanel();
+		ImageIcon ei = new ImageIcon("exit버튼.png");
+		
+		
 		public endDialog() {
+			
+			
+			
 			setTitle("Game End");
-			setSize(300, 200);
+			setSize(300, 150);
 			setVisible(true);
 			setLocation(frameX + 250, frameY + 300);
-			setLayout(new BorderLayout());
-		}
-
-		public void actionPerformed(ActionEvent e) {
-
+			setLayout(null);
+			
+			p.setLayout(null);
+			end.setBounds(85,40,120,30);
+			end.setIcon(ei);
+			end.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					System.exit(0);
+				}
+				
+			});
+			
+			add(end);
 		}
 	}
 }
