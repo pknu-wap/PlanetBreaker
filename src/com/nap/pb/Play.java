@@ -239,44 +239,32 @@ public class Play extends JFrame {
 	}
 
 	class endDialog extends JDialog {
-		JButton retry = new JButton("Retry");
-		JButton main = new JButton("Main Menu");
+		JButton end = new JButton("Exit");
 		JPanel p = new JPanel();
+		ImageIcon ei = new ImageIcon("exit버튼.png");
+		
 		
 		public endDialog() {
+			
+			
+			
 			setTitle("Game End");
-			setSize(300, 200);
+			setSize(300, 150);
 			setVisible(true);
 			setLocation(frameX + 250, frameY + 300);
+			setLayout(null);
 			
 			p.setLayout(null);
-			retry.setBounds(100,40,100,30);
-			retry.addActionListener(new ActionListener() {
+			end.setBounds(85,40,120,30);
+			end.setIcon(ei);
+			end.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					setVisible(false);
-					start();
-					ball.cx = 382;
-				    ball.cy = 550;
-				    ball.vx=0;
-				    ball.vy=Math.sqrt(8);
-					
-					
-				}
-				
-			});
-			main.setBounds(100,100,100,30);
-			main.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					
+					System.exit(0);
 				}
 				
 			});
 			
-			p.add(retry);
-			p.add(main);
-			
-			add(p);
-			
+			add(end);
 		}
 	}
 }
