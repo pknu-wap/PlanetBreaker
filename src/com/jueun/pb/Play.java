@@ -44,6 +44,7 @@ public class Play extends JFrame {
       field = new Field(800, 800, this);
       ball = new Ball(field,this);
       bar = new Bar(field);
+      bgm = new Music("nap_bgm.mp3",true);
       makeBricks();
       
       ButtonListener listener = new ButtonListener();
@@ -80,8 +81,7 @@ public class Play extends JFrame {
   
 
 void start() {
-	  Music bgm = new Music("pb_bgm.mp3",true);
-	 bgm.start();
+	  bgm.start();
       stop();
    }
 

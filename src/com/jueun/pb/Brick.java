@@ -5,6 +5,7 @@ import java.awt.*;
 public class Brick {
    Field f;
    Ball b;
+   Music sound;
    int x;
    int y;
    int width;
@@ -59,10 +60,12 @@ public class Brick {
                && (b.y <= y + height - b.radius + 1 && b.y >= y - b.radius - 1)) {
             b.vx = -(b.vx);
             armor--;
+            //b.sound();
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
+              
             }
          }
       }
@@ -72,10 +75,12 @@ public class Brick {
                && (b.y <= y + height - b.radius + 1 && b.y >= y - b.radius - 1)) {
             b.vx = -(b.vx);
             armor--;
+            //b.sound();
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
+               
             }
          }
       }
@@ -86,10 +91,12 @@ public class Brick {
                && (b.y >= y - 2 * b.radius - 1 && b.y <= y - 2 * b.radius)) {
             b.vy = -(b.vy);
             armor--;
+            //b.sound();
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
+               
             }
          }
       }
@@ -99,10 +106,12 @@ public class Brick {
                && (b.y >= y + height && b.y <= y + height + 1)) {
             b.vy = -(b.vy);
             armor--;
+            //b.sound();
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
+               
             }
          }
       }

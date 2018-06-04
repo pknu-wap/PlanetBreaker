@@ -1,6 +1,12 @@
 package com.jueun.pb;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.io.File;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class Ball {
    Field field;
@@ -19,6 +25,9 @@ public class Ball {
    int cy ;
    int x1,y1,w,h,d;
 
+   Music effect1;
+   Music effect2;
+   
    Ball(Field field,Play play) { // 공 생성자
       // x = field.getRight() / 2;
       // y = field.getBottom() / 2;
@@ -33,8 +42,21 @@ public class Ball {
       stop_v = 0;
       this.field = field;
       this.play = play;
+      
+      //effect1 = new Music()
    }
+   
+   /*void sound() { //공이랑 바 충돌 효과음
+	   try {
+		   AudioInputStream ais = AudioSystem.getAudioInputStream(new File("ball.wav"));
+		   Clip clip = AudioSystem.getClip();
+		   clip.open(ais);
+		   clip.start();
+	   }catch(Exception ex) {
 
+	   }
+   }
+*/
    void draw(Graphics g) { // 공 그리기
       int radius = 5;
       g.setColor(Color.white);
@@ -51,18 +73,22 @@ public class Ball {
       if (y < field.getTop()) {
          vy = -vy;
          y = 2 * field.getTop() - y;
+        
       }
       if (y + 2 * radius > field.getBottom()) {
          vy = -vy;
          y = 2 * field.getBottom() - y;
+       
       }
       if (x < field.getLeft()) {
          vx = -vx;
          x = 2 * field.getLeft() - x;
+         
       }
       if (x + 2 * radius > field.getRight()) {
          vx = -vx;
          x = 2 * field.getRight() - x;
+        
       }
    }
 
