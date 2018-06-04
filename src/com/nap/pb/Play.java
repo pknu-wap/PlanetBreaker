@@ -237,20 +237,39 @@ public class Play extends JFrame {
 			brick[i] = new Brick(field, ball, bx + D * (i - 72) + 75, bx + D * 9, 1);
 	}
 
-	class endDialog extends JDialog implements ActionListener {
-		JButton retry = new JButton();
-		JButton main = new JButton();
-
+	class endDialog extends JDialog {
+		JButton retry = new JButton("Retry");
+		JButton main = new JButton("Main Menu");
+		JPanel p = new JPanel();
+		
 		public endDialog() {
 			setTitle("Game End");
 			setSize(300, 200);
 			setVisible(true);
 			setLocation(frameX + 250, frameY + 300);
-			setLayout(new BorderLayout());
-		}
-
-		public void actionPerformed(ActionEvent e) {
-
+			
+			p.setLayout(null);
+			retry.setBounds(100,40,100,30);
+			retry.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					setVisible(false);
+					start();
+					ball.cx = 382;
+				    ball.cy = 550;
+				    ball.vx=0;
+				    ball.vy=Math.sqrt(8);
+					
+					
+				}
+				
+			});
+			main.setBounds(100,100,100,30);
+			
+			p.add(retry);
+			p.add(main);
+			
+			add(p);
+			
 		}
 	}
 }
