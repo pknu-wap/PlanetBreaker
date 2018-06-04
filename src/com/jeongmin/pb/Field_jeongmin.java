@@ -19,7 +19,7 @@ public class Field_jeongmin extends JPanel implements KeyListener {
 
    //boolean 변수를 주고 이 변수가 true일 경우에는 계속 움직이고
    //false일 경우에는 멈추게 구현
-   boolean keepMove;
+   boolean keepMove;//+
    
    Field_jeongmin(int wide, int high, Play_jeongmin play) { // Field 생성자
       addKeyListener(this);
@@ -31,7 +31,7 @@ public class Field_jeongmin extends JPanel implements KeyListener {
       h = high;
       
       //처음 생성시에는 멈춰 있어야 되기 때문에 false로 지정
-      keepMove = false;
+      keepMove = false;//+
 
       try {
          image = ImageIO.read(new File("space_background.png"));

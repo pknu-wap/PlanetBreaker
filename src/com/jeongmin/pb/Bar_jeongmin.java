@@ -31,7 +31,7 @@ class Bar_jeongmin {
    BufferedImage tmp;
    
    
-   String movedir = null;	//바가 움직일 방향
+   String movedir = null;	//+바가 움직일 방향
    
    Field_jeongmin field;
    
@@ -53,7 +53,7 @@ class Bar_jeongmin {
       g.setColor(Color.red);
       g.drawRect(frameX1, frameY1, frameD, frameD);
       
-      move(movedir);	//움직임과 동시에 바를 그려줌
+      move(movedir);	//+움직임과 동시에 바를 그려줌
       
       switch(num) {
       case 0:

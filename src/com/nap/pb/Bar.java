@@ -25,10 +25,12 @@ class Bar {
    private int h = 43;            //바의 높이
    private int x1=frameX1+frameD/2-w/2;            //바의 x좌표
    private int y1=frameY2-space-h;            //바의 y좌표
-   private int dx=20;            //바의 속도
+   private int dx=5;            //바의 속도
    private int num=0;            //면의 번호
    private int d;
    BufferedImage tmp;
+   
+   String movedir = null;	//+바가 움직일 방향
    
    Field field;
    
@@ -50,6 +52,8 @@ class Bar {
       g.setColor(Color.red);
       g.drawRect(frameX1, frameY1, frameD, frameD);
       
+      move(movedir);	//+움직임과 동시에 바를 그려줌
+      
       switch(num) {
       case 0:
          g.drawImage(ship0,x1,y1,null );
@@ -68,10 +72,12 @@ class Bar {
       
    }
 
-   public void move(String a) {
+   public void move(String movedir) {
       System.out.println(x1 + "  " + y1 + " " + num);
 
-      switch(a) {
+      if(field.keepMove==true)	//방향키를 눌렸을 경우에만(방향키를 누르면 keepMove가 true값이 됨)
+      {
+      switch(movedir) {
       case "+":
     	  switch(num) {
     	  case 0:
@@ -151,6 +157,7 @@ class Bar {
     		  }
     		  break;
     	  }
+      }
       }
    }
    public void teleport() {
