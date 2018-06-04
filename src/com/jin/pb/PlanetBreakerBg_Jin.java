@@ -17,7 +17,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PlanetBreakerBg_Jin extends JFrame {
@@ -33,7 +35,10 @@ public class PlanetBreakerBg_Jin extends JFrame {
 	private JButton sb,hb,eb;
 	private BufferedImage gimg, timg, himg;
 	private Image bg;
-
+	private JLabel help;
+	private JDialog h;
+	
+	
 	public PlanetBreakerBg_Jin() {
 		field = new Field_jin(500, 500, this);
 		field.setLocation(50,50);
@@ -81,18 +86,41 @@ public class PlanetBreakerBg_Jin extends JFrame {
 		startPanel.setSize(600, 600);
 		startPanel.setVisible(true);
 		startPanel.setLayout(null);
-		sb = new JButton("Game Start");
+		sb = new JButton();
 		sb.setBounds(240, 400, 120, 30);
+		ImageIcon si = new ImageIcon("start버튼.png");
+		si.setImage(si.getImage().getScaledInstance(130, 30, Image.SCALE_SMOOTH));
+		sb.setIcon(si);
 		sb.addActionListener(listener);
 		startPanel.add(sb);
-		hb = new JButton("Help");
+		hb = new JButton();
 		hb.setBounds(240, 450, 120, 30);
+		ImageIcon hi = new ImageIcon("help버튼.png");
+		hi.setImage(hi.getImage().getScaledInstance(130, 30, Image.SCALE_SMOOTH));
+		hb.setIcon(hi);
 		hb.addActionListener(listener);
-		eb = new JButton("Exit");
+		startPanel.add(hb);
+		eb = new JButton();
 		eb.setBounds(240, 500, 120, 30);
+		ImageIcon ei = new ImageIcon("exit버튼.png");
+		ei.setImage(ei.getImage().getScaledInstance(130, 30, Image.SCALE_SMOOTH));
+		eb.setIcon(ei);
 		eb.addActionListener(listener);
 		startPanel.add(eb);
 	
+		JDialog.setDefaultLookAndFeelDecorated(true);
+		h=new JDialog(this,"Help",true);
+        h.setSize(400,400);
+        h.setVisible(false);
+		
+		help = new JLabel();	
+		ImageIcon t = new ImageIcon("조작키.png");
+		t.setImage(t.getImage().getScaledInstance(390, 380, Image.SCALE_SMOOTH));
+		help.setIcon(t);		//집게역할의 label을 만들고 그 위에 집게이미지를 삽입
+		help.setSize(390, 380);//집게의 크기와 위치설정
+		
+        
+		
 		add(startPanel);
 		gamePanel = new GPanel();
 		gamePanel.add(field);
@@ -136,7 +164,15 @@ public class PlanetBreakerBg_Jin extends JFrame {
 				setFocusable(true);
 			} // ������ �ٽ� ����
 			else if (e.getSource() == hb) {
-				
+				JDialog.setDefaultLookAndFeelDecorated(true);
+				h=new JDialog(); 
+				h.setVisible(true);
+				h.setSize(400, 400);
+		        h.setOpacity(1.0f);
+		        h.setAlwaysOnTop(true);
+		        h.setLocation(150, 100);
+		        h.setBackground(new Color(0,255,255,50));
+		        h.add(help);
 			}
 			else if (e.getSource() == eb) { // 2����ư�� ������ ����
 				System.exit(0);
