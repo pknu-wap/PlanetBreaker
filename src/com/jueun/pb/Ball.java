@@ -1,7 +1,6 @@
 package com.jueun.pb;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.File;
 
 import javax.sound.sampled.AudioInputStream;
@@ -11,7 +10,6 @@ import javax.sound.sampled.Clip;
 public class Ball {
    Field field;
    Play play;
-
    int x, y; // 공 좌표
    int init_x = 265;
    int init_y = 500;
@@ -40,10 +38,10 @@ public class Ball {
       stop_v = 0;
       this.field = field;
       this.play = play;
-    
    }
    
-   public void sound(String name) {
+
+   public void sound(String name) {  //효과음
 	   try
 	   {
 	   AudioInputStream ais = AudioSystem.getAudioInputStream(new File(name));
@@ -56,6 +54,7 @@ public class Ball {
 	   {
 	    } 
    }
+
    void draw(Graphics g) { // 공 그리기
       int radius = 5;
       g.setColor(Color.white);
@@ -72,22 +71,18 @@ public class Ball {
       if (y < field.getTop()) {
          vy = -vy;
          y = 2 * field.getTop() - y;
-        
       }
       if (y + 2 * radius > field.getBottom()) {
          vy = -vy;
          y = 2 * field.getBottom() - y;
-       
       }
       if (x < field.getLeft()) {
          vx = -vx;
          x = 2 * field.getLeft() - x;
-         
       }
       if (x + 2 * radius > field.getRight()) {
          vx = -vx;
          x = 2 * field.getRight() - x;
-        
       }
    }
 
@@ -129,7 +124,7 @@ public class Ball {
                vx=Math.abs(vx1);
                vy=-Math.abs(vy1);
                sound("bar.wav");
-               }
+            }
          }
          break;
       case 1:
@@ -163,17 +158,14 @@ public class Ball {
                vx=-Math.abs(vx2);
                vy =Math.abs(vy2);
                sound("bar.wav");
-            
             }else if(x1+d*2<=cx&&cx<x1+d*3) {
                vx=Math.abs(vx2);
                vy =Math.abs(vy2);
                sound("bar.wav");
-              
             }else if(x1+d*3<=cx&&cx<x1+w) {
                vx=Math.abs(vx1);
                vy=Math.abs(vy1);
                sound("bar.wav");
-              
             }
          }
          break;
@@ -183,17 +175,14 @@ public class Ball {
                vx=Math.abs(vx1);
                vy=-Math.abs(vy1);
                sound("bar.wav");
-               
             }else if(y1+d<=cy&&cy<y1+d*2) {
                vx=Math.abs(vy2);
                vy=-Math.abs(vx2);
                sound("bar.wav");
-              
             }else if(y1+d*2<=cy&&cy<y1+d*3) {
                vx=Math.abs(vy2);
                vy=Math.abs(vx2);
                sound("bar.wav");
-            
             }else if(y1+d*3<=cy&&cy<y1+h) {
                vx=Math.abs(vx1);
                vy=Math.abs(vy1);

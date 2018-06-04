@@ -1,11 +1,11 @@
 package com.jueun.pb;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Brick {
    Field f;
    Ball b;
-   Music sound;
    int x;
    int y;
    int width;
@@ -65,7 +65,6 @@ public class Brick {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
-              
             }
          }
       }
@@ -80,7 +79,6 @@ public class Brick {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
-               
             }
          }
       }
@@ -96,7 +94,6 @@ public class Brick {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
-               
             }
          }
       }
@@ -111,7 +108,6 @@ public class Brick {
                x = after_striking_x;
                y = after_striking_y;
                f.play.breaked_brick_number--;
-               
             }
          }
       }

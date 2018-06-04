@@ -17,6 +17,10 @@ public class Field extends JPanel implements KeyListener {
    Bar bar;
    Ball ball;
 
+ //boolean 변수를 주고 이 변수가 true일 경우에는 계속 움직이고
+   //false일 경우에는 멈추게 구현
+   boolean keepMove;//+
+   
    Field(int wide, int high, Play play) { // Field 생성자
       addKeyListener(this);
       setFocusable(true);
@@ -25,6 +29,9 @@ public class Field extends JPanel implements KeyListener {
       this.play = play;
       w = wide;
       h = high;
+      
+    //처음 생성시에는 멈춰 있어야 되기 때문에 false로 지정
+      keepMove = false;//+
 
       try {
          image = ImageIO.read(new File("space_background.png"));
@@ -57,14 +64,18 @@ public class Field extends JPanel implements KeyListener {
       int keycode = e.getKeyCode();
       switch (keycode) {
       case KeyEvent.VK_RIGHT:
-    	 play.bar.move("+");
+    	 //play.bar.move("+");
+    	 play.bar.movedir = "+";	//오른쪽 방향키를 눌렀을 경우 bar의 방향을 +방향으로
+     	 keepMove = true;			//계속 움직이게
          // repaint();
          break;
       case KeyEvent.VK_LEFT:
-    	 play.bar.move("-");
+    	// play.bar.move("-");
+    	  play.bar.movedir = "-";	//왼쪽 방향키를 눌렸을 경우 bar의 방향을 -방향으로
+    	  keepMove = true;			//계속 움직이게
          break;
       case KeyEvent.VK_SPACE:
-         play.bar.setDx(50);
+         play.bar.setDx(20);
          break;
       case KeyEvent.VK_ENTER:
          play.ball.vx = -1;
@@ -77,9 +88,22 @@ public class Field extends JPanel implements KeyListener {
    }
 
    public void keyReleased(KeyEvent e) {
-      int keycode = e.getKeyCode();
-      if (keycode == KeyEvent.VK_SPACE)
-         play.bar.setDx(20);
+	   int keycode = e.getKeyCode();
+	      if (keycode == KeyEvent.VK_SPACE)
+	         play.bar.setDx(5);
+	      switch (keycode) {
+	      case KeyEvent.VK_RIGHT:
+	    	 //play.bar.move("+");
+	    	 //play.bar.movedir = "+";
+	    	  keepMove = false;		//키를 눌렸다가 뗐을 경우 멈추게
+	         // repaint();
+	         break;
+	      case KeyEvent.VK_LEFT:
+	    	 //play.bar.move("-");
+	    	  //play.bar.movedir = "-";
+	    	  keepMove = false;		//키를 눌렸다가 뗐을 경우 멈추게
+	         break;
+	      }
    }
 
    public void keyTyped(KeyEvent arg0) {

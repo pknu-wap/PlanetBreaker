@@ -1,8 +1,7 @@
 package com.nap.pb;
 
-import java.awt.*;
-
-import com.jueun.pb.Music;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Brick {
    Field f;

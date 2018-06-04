@@ -1,20 +1,28 @@
 package com.nap.pb;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import java.io.*;
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-import com.jueun.pb.Music;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Play extends JFrame {
 	Ball ball;
 	Brick[] brick;
 	Field field;
 	Bar bar;
-	 Music bgm;
+	Music bgm;
 	int breaked_brick_number;
 	private BufferedImage image, title;
 	JPanel startPanel;
@@ -148,6 +156,7 @@ public class Play extends JFrame {
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == sb) { // 1����ư�� ������ ����
+				ball.sound("btt.wav");
 				startPanel.setVisible(false);
 				gamePanel.setVisible(true);
 				field.setVisible(true);
@@ -158,6 +167,7 @@ public class Play extends JFrame {
 
 			} // ������ �ٽ� ����
 			else if (e.getSource() == hb) {
+				ball.sound("btt.wav");
 				JDialog.setDefaultLookAndFeelDecorated(true);
 				h=new JDialog(); 
 				h.setVisible(true);
@@ -170,6 +180,7 @@ public class Play extends JFrame {
 		        h.add(help);
 			}
 			else if (e.getSource() == eb) { // 2����ư�� ������ ����
+				ball.sound("btt.wav");
 				System.exit(0);
 			} // ������ ����
 		}
@@ -258,7 +269,8 @@ public class Play extends JFrame {
 			setVisible(true);
 			setLocation(frameX + 250, frameY + 300);
 			setLayout(null);
-			
+			bgm.close();
+			ball.sound("gameover.wav");
 			p.setLayout(null);
 			end.setBounds(85,40,120,30);
 			end.setIcon(ei);
