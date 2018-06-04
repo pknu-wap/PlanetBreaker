@@ -1,4 +1,4 @@
-package com.jueun.pb;
+package com.nap.pb;
 
 import java.io.BufferedInputStream;
 import java.io.File;

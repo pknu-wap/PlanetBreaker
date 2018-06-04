@@ -7,11 +7,14 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import com.jueun.pb.Music;
+
 public class Play extends JFrame {
 	Ball ball;
 	Brick[] brick;
 	Field field;
 	Bar bar;
+	 Music bgm;
 	int breaked_brick_number;
 	private BufferedImage image, title;
 	JPanel startPanel;
@@ -45,6 +48,7 @@ public class Play extends JFrame {
 		field = new Field(800, 800, this);
 		ball = new Ball(field, this);
 		bar = new Bar(field);
+		bgm = new Music("nap_bgm.mp3",true);
 		makeBricks();
 
 		ButtonListener listener = new ButtonListener();
@@ -107,6 +111,7 @@ public class Play extends JFrame {
 	
 
 	void start() {
+		bgm.start();
 		stop();
 	}
 

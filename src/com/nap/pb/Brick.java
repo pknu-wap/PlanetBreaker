@@ -2,6 +2,8 @@ package com.nap.pb;
 
 import java.awt.*;
 
+import com.jueun.pb.Music;
+
 public class Brick {
    Field f;
    Ball b;
@@ -59,6 +61,7 @@ public class Brick {
                && (b.y <= y + height - b.radius + 1 && b.y >= y - b.radius - 1)) {
             b.vx = -(b.vx);
             armor--;
+            b.sound("ball.wav");
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
@@ -72,6 +75,7 @@ public class Brick {
                && (b.y <= y + height - b.radius + 1 && b.y >= y - b.radius - 1)) {
             b.vx = -(b.vx);
             armor--;
+            b.sound("ball.wav");
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
@@ -86,6 +90,7 @@ public class Brick {
                && (b.y >= y - 2 * b.radius - 1 && b.y <= y - 2 * b.radius)) {
             b.vy = -(b.vy);
             armor--;
+            b.sound("ball.wav");
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
@@ -99,6 +104,7 @@ public class Brick {
                && (b.y >= y + height && b.y <= y + height + 1)) {
             b.vy = -(b.vy);
             armor--;
+            b.sound("ball.wav");
             if (armor == 0) {
                x = after_striking_x;
                y = after_striking_y;
