@@ -40,7 +40,11 @@ public class Brick_jeongmin {
    }
 
    void draw(Graphics g) {
-      if (armor == 4)
+	  if(armor == 6)
+		  g.setColor(Color.red);
+	  else if (armor == 5)
+	     g.setColor(Color.magenta);
+	  else if (armor == 4)
          g.setColor(Color.gray);
       else if (armor == 3)
          g.setColor(Color.darkGray);
