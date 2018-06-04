@@ -104,6 +104,7 @@ public class Play extends JFrame {
 		setTitle("Planet Breaker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 
 	void start() {
 		stop();
@@ -264,6 +265,12 @@ public class Play extends JFrame {
 				
 			});
 			main.setBounds(100,100,100,30);
+			main.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+				}
+				
+			});
 			
 			p.add(retry);
 			p.add(main);
