@@ -4,12 +4,17 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import javazoom.jl.player.Player;
 
 public class Music extends Thread {
 	private Player player;  //player�� ���ι��� ���̺귯������ ��������
 	private boolean isLoop; //���� ���� �ݺ� ����
 	private File file;
+	private File file2;
 	private FileInputStream fis;
 	private BufferedInputStream bis;
 	
@@ -45,5 +50,6 @@ public class Music extends Thread {
 		   System.out.println(e.getMessage());
 	   }
    }
+  
 }
 
