@@ -11,8 +11,6 @@ public class Ball {
    Field field;
    Play play;
    int x, y; // 공 좌표
-   int init_x = 265;
-   int init_y = 500;
    int radius;
    double vx, vy; // 공 속도
    double stop_v;
@@ -23,6 +21,15 @@ public class Ball {
    int cx ;
    int cy ;
    int x1,y1,w,h,d;
+   //초기화를 위한 변수들
+   int init_x;
+   int init_y;
+   double init_vx;
+   double init_vy;
+   double init_vx1;
+   double init_vy1;
+   double init_vx2;
+   double init_vy2;
 
    Ball(Field field,Play play) { // 공 생성자
       // x = field.getRight() / 2;
@@ -36,6 +43,16 @@ public class Ball {
       vx2 = Math.sqrt(3);
       vy2 = Math.sqrt(9);
       stop_v = 0;
+      
+      init_vx1 = vx1;
+      init_vy1 = vy1;
+      init_x = x;
+      init_y = y;
+      init_vx = 0;
+      init_vy = 2;
+      init_vx2 = vx2;
+      init_vy2 = vy2;
+      
       this.field = field;
       this.play = play;
    }

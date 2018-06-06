@@ -41,16 +41,20 @@ public class Brick {
    }
 
    void draw(Graphics g) {
-      if (armor == 4)
-         g.setColor(Color.gray);
-      else if (armor == 3)
-         g.setColor(Color.darkGray);
-      else if (armor == 2)
-         g.setColor(Color.yellow);
-      else if (armor == 1)
-         g.setColor(Color.orange);
-      g.fillRect(x, y, width, height);
-      intersect(b);
+	   if(armor == 6)
+			  g.setColor(Color.red);
+		  else if (armor == 5)
+		     g.setColor(Color.magenta);
+		  else if (armor == 4)
+	         g.setColor(Color.gray);
+	      else if (armor == 3)
+	         g.setColor(Color.darkGray);
+	      else if (armor == 2)
+	         g.setColor(Color.yellow);
+	      else if (armor == 1)
+	         g.setColor(Color.orange);
+	      g.fillRect(x, y, width, height);
+	      intersect(b);
    }
 
    void intersect(Ball b) {

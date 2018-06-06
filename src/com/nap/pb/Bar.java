@@ -21,13 +21,20 @@ class Bar {
    private int frameY2 = frameY1 + frameD;
    private int space = 15;
    
-   private int w = 113;         //바의 크기
-   private int h = 43;            //바의 높이
-   private int x1=frameX1+frameD/2-w/2;            //바의 x좌표
-   private int y1=frameY2-space-h;            //바의 y좌표
-   private int dx=5;            //바의 속도
-   private int num=0;            //면의 번호
-   private int d;
+   int w = 113;         //바의 크기
+   int h = 43;            //바의 높이
+   int x1=frameX1+frameD/2-w/2;            //바의 x좌표
+   int y1=frameY2-space-h;            //바의 y좌표
+  private int dx=5;            //바의 속도
+   int num=0;            //면의 번호
+  private int d;
+  
+  int init_x1 = x1;
+  int init_y1 = y1;
+  int init_num = num;
+  int init_w = w;
+  int init_h = h;
+  
    BufferedImage tmp;
    
    String movedir = null;	//+바가 움직일 방향
@@ -73,7 +80,7 @@ class Bar {
    }
 
    public void move(String movedir) {
-      System.out.println(x1 + "  " + y1 + " " + num);
+      //System.out.println(x1 + "  " + y1 + " " + num);
 
       if(field.keepMove==true)	//방향키를 눌렸을 경우에만(방향키를 누르면 keepMove가 true값이 됨)
       {

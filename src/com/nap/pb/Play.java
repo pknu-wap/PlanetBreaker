@@ -142,15 +142,29 @@ public class Play extends JFrame {
 	}
 
 	void nextLevel() {
-		for (int i = 0; i < 76; i++) {
-			brick[i].basic_armor++;
-			brick[i].armor = brick[i].basic_armor;
-			brick[i].x = brick[i].basic_x;
-			brick[i].y = brick[i].basic_y;
-		}
-		ball.x = ball.init_x;
-		ball.y = ball.init_y;
-		breaked_brick_number = 75;
+		for(int i = 0;i<76;i++) {
+	         brick[i].basic_armor = brick[i].basic_armor+1; 
+	         brick[i].armor = brick[i].basic_armor;
+	         brick[i].x = brick[i].basic_x;
+	         brick[i].y = brick[i].basic_y;
+	      }
+	      ball.x = ball.init_x;
+	      ball.y = ball.init_y;
+	      ball.vx = ball.init_vx;
+	      ball.vy = ball.init_vy;
+	      ball.vx1 = ball.init_vx1;
+	      ball.vy1 = ball.init_vy1;
+	      ball.vx2 = ball.init_vx2;
+	      ball.vy2 = ball.init_vy2;
+	      
+	      bar.x1 = bar.init_x1;
+	      bar.y1 = bar.init_y1;
+	      bar.num = bar.init_num;
+	      bar.w = bar.init_w;
+	      bar.h = bar.init_h;
+	      
+	      
+	      breaked_brick_number = 75;
 	}
 
 	private class ButtonListener implements ActionListener {

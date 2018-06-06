@@ -86,6 +86,7 @@ public class Field_jeongmin extends JPanel implements KeyListener {
          break;
       case KeyEvent.VK_0:
     	 play.nextLevel();
+    	 break;
       }
    }
 

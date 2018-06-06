@@ -7,7 +7,6 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
 public class Play_jeongmin extends JFrame {
    Ball_jeongmin ball;
    Brick_jeongmin[] brick;

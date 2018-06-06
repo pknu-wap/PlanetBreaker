@@ -84,6 +84,9 @@ public class Field extends JPanel implements KeyListener {
       case KeyEvent.VK_CONTROL:
          play.bar.teleport();
          break;
+      case KeyEvent.VK_0:
+     	 play.nextLevel();
+     	 break;
       }
    }
 
