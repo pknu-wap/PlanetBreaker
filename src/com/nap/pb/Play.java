@@ -48,7 +48,7 @@ public class Play extends JFrame {
 
 	Play() {
 		try {
-			title = ImageIO.read(new File("title.jpg"));
+			title = ImageIO.read(new File("image\\title.jpg"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			System.exit(0);
@@ -56,7 +56,7 @@ public class Play extends JFrame {
 		field = new Field(800, 800, this);
 		ball = new Ball(field, this);
 		bar = new Bar(field);
-		bgm = new Music("nap_bgm.mp3",true);
+		bgm = new Music("sound\\nap_bgm.mp3", true);
 		makeBricks();
 
 		ButtonListener listener = new ButtonListener();
@@ -66,40 +66,40 @@ public class Play extends JFrame {
 		startPanel.setLayout(null);
 		sb = new JButton();
 		sb.setBounds(330, 520, 120, 30);
-		ImageIcon si = new ImageIcon("start버튼.png");
+		ImageIcon si = new ImageIcon("image\\start버튼.png");
 		si.setImage(si.getImage().getScaledInstance(130, 30, Image.SCALE_SMOOTH));
 		sb.setIcon(si);
 		sb.addActionListener(listener);
 		startPanel.add(sb);
 		hb = new JButton();
 		hb.setBounds(330, 560, 120, 30);
-		ImageIcon hi = new ImageIcon("help버튼.png");
+		ImageIcon hi = new ImageIcon("image\\help버튼.png");
 		hi.setImage(hi.getImage().getScaledInstance(130, 30, Image.SCALE_SMOOTH));
 		hb.setIcon(hi);
 		hb.addActionListener(listener);
 		startPanel.add(hb);
 		eb = new JButton();
 		eb.setBounds(330, 600, 120, 30);
-		ImageIcon ei = new ImageIcon("exit버튼.png");
+		ImageIcon ei = new ImageIcon("image\\exit버튼.png");
 		ei.setImage(ei.getImage().getScaledInstance(130, 30, Image.SCALE_SMOOTH));
 		eb.setIcon(ei);
 		eb.addActionListener(listener);
 		startPanel.add(eb);
 		add(startPanel);
-		
+
 		JDialog.setDefaultLookAndFeelDecorated(true);
-		h=new JDialog(this,"Help",true);
-        h.setSize(400,400);
-        h.setVisible(false);
-        h.setModal(true);
-        
+		h = new JDialog(this, "Help", true);
+		h.setSize(400, 400);
+		h.setVisible(false);
+		h.setModal(true);
+
 		h.setLocation(1000, 200);
-		
-		help = new JLabel();	
-		ImageIcon t = new ImageIcon("조작키.png");
+
+		help = new JLabel();
+		ImageIcon t = new ImageIcon("image\\조작키.png");
 		t.setImage(t.getImage().getScaledInstance(390, 380, Image.SCALE_SMOOTH));
-		help.setIcon(t);		//집게역할의 label을 만들고 그 위에 집게이미지를 삽입
-		help.setSize(390, 380);//집게의 크기와 위치설정
+		help.setIcon(t); // 집게역할의 label을 만들고 그 위에 집게이미지를 삽입
+		help.setSize(390, 380);// 집게의 크기와 위치설정
 
 		gamePanel.add(field);
 		gamePanel.setVisible(false);
@@ -116,7 +116,6 @@ public class Play extends JFrame {
 		setTitle("Planet Breaker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
 
 	void start() {
 		bgm.start();
@@ -142,35 +141,34 @@ public class Play extends JFrame {
 	}
 
 	void nextLevel() {
-		for(int i = 0;i<76;i++) {
-	         brick[i].basic_armor = brick[i].basic_armor+1; 
-	         brick[i].armor = brick[i].basic_armor;
-	         brick[i].x = brick[i].basic_x;
-	         brick[i].y = brick[i].basic_y;
-	      }
-	      ball.x = ball.init_x;
-	      ball.y = ball.init_y;
-	      ball.vx = ball.init_vx;
-	      ball.vy = ball.init_vy;
-	      ball.vx1 = ball.init_vx1;
-	      ball.vy1 = ball.init_vy1;
-	      ball.vx2 = ball.init_vx2;
-	      ball.vy2 = ball.init_vy2;
-	      
-	      bar.x1 = bar.init_x1;
-	      bar.y1 = bar.init_y1;
-	      bar.num = bar.init_num;
-	      bar.w = bar.init_w;
-	      bar.h = bar.init_h;
-	      
-	      
-	      breaked_brick_number = 75;
+		for (int i = 0; i < 76; i++) {
+			brick[i].basic_armor = brick[i].basic_armor + 1;
+			brick[i].armor = brick[i].basic_armor;
+			brick[i].x = brick[i].basic_x;
+			brick[i].y = brick[i].basic_y;
+		}
+		ball.x = ball.init_x;
+		ball.y = ball.init_y;
+		ball.vx = ball.init_vx;
+		ball.vy = ball.init_vy;
+		ball.vx1 = ball.init_vx1;
+		ball.vy1 = ball.init_vy1;
+		ball.vx2 = ball.init_vx2;
+		ball.vy2 = ball.init_vy2;
+
+		bar.x1 = bar.init_x1;
+		bar.y1 = bar.init_y1;
+		bar.num = bar.init_num;
+		bar.w = bar.init_w;
+		bar.h = bar.init_h;
+
+		breaked_brick_number = 75;
 	}
 
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == sb) { // 1����ư�� ������ ����
-				ball.sound("btt.wav");
+				ball.sound("sound\\btt.wav");
 				startPanel.setVisible(false);
 				gamePanel.setVisible(true);
 				field.setVisible(true);
@@ -181,20 +179,19 @@ public class Play extends JFrame {
 
 			} // ������ �ٽ� ����
 			else if (e.getSource() == hb) {
-				ball.sound("btt.wav");
+				ball.sound("sound\\btt.wav");
 				JDialog.setDefaultLookAndFeelDecorated(true);
-				h=new JDialog(); 
+				h = new JDialog();
 				h.setVisible(true);
 				h.setSize(400, 400);
-		        h.setOpacity(1.0f);
-		        h.setAlwaysOnTop(true);
-		        h.setLocationRelativeTo(startPanel);
-		        h.setLocation(600, 200);
-		        h.setBackground(new Color(0,255,255,50));
-		        h.add(help);
-			}
-			else if (e.getSource() == eb) { // 2����ư�� ������ ����
-				ball.sound("btt.wav");
+				h.setOpacity(1.0f);
+				h.setAlwaysOnTop(true);
+				h.setLocationRelativeTo(startPanel);
+				h.setLocation(600, 200);
+				h.setBackground(new Color(0, 255, 255, 50));
+				h.add(help);
+			} else if (e.getSource() == eb) { // 2����ư�� ������ ����
+				ball.sound("sound\\btt.wav");
 				System.exit(0);
 			} // ������ ����
 		}
@@ -271,30 +268,27 @@ public class Play extends JFrame {
 	class endDialog extends JDialog {
 		JButton end = new JButton("Exit");
 		JPanel p = new JPanel();
-		ImageIcon ei = new ImageIcon("exit버튼.png");
-		
-		
+		ImageIcon ei = new ImageIcon("image\\exit버튼.png");
+
 		public endDialog() {
-			
-			
-			
+
 			setTitle("Game End");
 			setSize(300, 150);
 			setVisible(true);
 			setLocation(frameX + 250, frameY + 300);
 			setLayout(null);
 			bgm.close();
-			ball.sound("gameover.wav");
+			ball.sound("sound\\gameover.wav");
 			p.setLayout(null);
-			end.setBounds(85,40,120,30);
+			end.setBounds(85, 40, 120, 30);
 			end.setIcon(ei);
 			end.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					System.exit(0);
 				}
-				
+
 			});
-			
+
 			add(end);
 		}
 	}
