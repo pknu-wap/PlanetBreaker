@@ -274,7 +274,7 @@ public class Play extends JFrame {
 
 			setTitle("Game End");
 			setSize(300, 150);
-			setVisible(true);
+			
 			setLocation(frameX + 250, frameY + 300);
 			setLayout(null);
 			bgm.close();
@@ -290,6 +290,7 @@ public class Play extends JFrame {
 			});
 
 			add(end);
+			setVisible(true);
 		}
 	}
 }
