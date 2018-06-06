@@ -72,7 +72,7 @@ public class Field extends JPanel implements KeyListener {
 			keepMove = true; // 계속 움직이게
 			break;
 		case KeyEvent.VK_SPACE:
-			play.bar.setDx(20);
+			play.bar.setDx(10);
 			break;
 		case KeyEvent.VK_ENTER:
 			play.ball.vx = -1;
